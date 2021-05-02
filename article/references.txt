@@ -1,0 +1,1 @@
+For the derivation of the temperature Theta I used both Kardar and Dalfovo's notes.

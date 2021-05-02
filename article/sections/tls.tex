@@ -1,0 +1,29 @@
+The most simple system that can exhibit negative temperatures is the two levels system (TLS). \\
+A TLS is a system (for example a particle) for which only two values of energy are admitted, say $E_1$ and $E_2$. Let us denote the 
+corresponding eigenstates by $\ket{1}$ and $\ket{2}$. \\
+Let us now consider a system composed of $N$ TLS. It is convenient to introduce the occupation numbers $n_1, n_2$ which denote,
+respectively, the number of TLS at energy $E_1$ and $E_2$. If we set $E_1=\epsilon$ and $E_2=0$ for simplicity, the energy of the system is
+\begin{equation}
+    E = n_1 E_1 + n_2 E_2 = n_1\epsilon
+    \label{eq:TLS_ensemble_energy}
+\end{equation}
+where $n_1 + n_2 = N$. \\
+One macrostate of the system is thus identifies by its energy and the total number of particles. The number of microstates corresponding 
+to one given microstate is the number of ways in which one can rearrange the particles in a way such that the total energy remains fixed, that is 
+\begin{equation*}
+    \Omega(E, N) = \frac{N!}{N_1!N_2!} = \frac{N!}{N_1! \, (N-1)!}
+\end{equation*}
+which corresponds to the Boltzmann entropy 
+\begin{equation*}
+    S(E, N) = k_B\ln\left(\frac{N!}{N_1! \, (N-1)!}\right)
+\end{equation*}
+In the limit of large $N$ the last expression can be expanded using using Stirling's formula $\ln(N!) \approx N\ln N$ which yields 
+\begin{equation*}
+    S(E, N) \approx N \ln \left(\frac{N}{N-n_1}\right) + n_1 \ln\left(\frac{N-n_1}{n_1}\right)
+\end{equation*}
+By using relation \ref{eq:TLS_ensemble_energy}
+\begin{gather*}
+    \frac{1}{T} = \frac{\partial S}{\partial E} = \frac{\partial S}{\partial n_1} \, \frac{\partial n_1}{\partial E} =
+    \frac{k_B}{\epsilon} \, \ln\left(\frac{N - n_1}{n_1}\right) = -\frac{k_B}{\epsilon} \, \ln\left(\frac{E}{N\epsilon - E}\right)
+\end{gather*}
+where in the last step I used equation \ref{eq:TLS_ensemble_energy} again. \\
