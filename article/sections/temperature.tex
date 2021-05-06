@@ -1,6 +1,7 @@
-\subsubsection*{Thermal equilibrium}
-Definition of macroscopic variables, equilibrium
-\subsubsection*{Temperature as equivalence class with respect to equilibrium equivalence relation}
+\subsubsection*{Temperature as an equilibrium property}
+Temperature can be more sistematically defined starting from the concept of \emph{equilibrium}. We consider a thermodynamic system to be in equilibrium when 
+no changes are observed in any macroscopic observable and when the system does not exchange heat nor work with the environment. In particular we say that the system is at \emph{thermal equilibrium} when no heat is exchanged by the system, and
+at \emph{mechanical equilibirum} when no work is done by or on the system. \\
 Let us consider three systems $A, B, C$ whose equilibrium properties are described by the variables
 $\{X_1, X_2, \dots\}$, $\{Y_1, Y_2, \dots\}$ and $\{Z_1, Z_2, \dots\}$. \\
 If $A$ and $B$ are in equilibrium for some values $\{X_1, X_2, \dots\}$ and $\{Y_1, Y_2, \dots\}$ of the coordinates, then there must be a relation between $\{X_1, X_2, \dots\}$ and $\{Y_1, Y_2, \dots\}$ which can be expressed as
@@ -73,7 +74,7 @@ because for an ideal gas $T \propto PV$. \\
 Another possible definition of the function $\Theta$, the one relevant for what follows, will be presented later in this chapter.
 
 \subsubsection*{Thermodynamic temperature}
-Once introducing an entropy as a function of the enrgy $S(E)$ it is possible to define a so called \emph{thermodynamic temperature} via the relation $\frac{1}{T} = \frac{\partial S}{\partial E}$.
+Once introducing an entropy as a function of the energy $S(E)$ it is possible to define a so called \emph{thermodynamic temperature} via the relation $\frac{1}{T} = \frac{\partial S}{\partial E}$.
 To see why this makes sense it is convenient to look at this example. \\
 First let us consider a system isolated from the environment, so that it cannot exchange heat or work (energy fixed). Let us indicate a generical
 state of the system by the microscopic coordinates $\ve{x} = (q_1, \dots, q_n, p_1, \dots, p_n)$ where $(q_i, p_i)$ is a pair of canonical coordinates. If $\ham(\ve{x})$ denotes the hamiltonian of the system,
@@ -117,7 +118,7 @@ The energy value that maximes $\Omega(E, \ve x)$ is the one that is represented 
 \begin{equation*}
     0 = \frac{\partial}{\partial E_1}(S_1(E_1) + S_2(E-E_1)) = \frac{\partial S_1(E_1)}{\partial E_1} - \frac{\partial S_2(E_2)}{\partial E_2} 
 \end{equation*}
-or 
+or
 \begin{equation*}
     \frac{\partial S_1(E_1)}{\partial E_1} = \frac{\partial S_2(E_2)}{\partial E_2} 
 \end{equation*}
@@ -127,6 +128,34 @@ $\frac{\partial S}{\partial E}$ must be an empirical temperature or, better, bec
     T_1 = T_2
 \end{equation*}
 This justifies the definition given at the beginning of this section 
-\begin{equation*}
+\begin{equation}
     \frac{1}{T} = \frac{\partial S(E)}{\partial E}
+    \label{eq:absolute_temperature}
+\end{equation}
+The derivation of the last equation made use only of the zeroth principle of thermodynamics and physical consideration about equilibrium: in this sense the temperature defined via \ref{eq:absolute_temperature} sometimes is also called \emph{absolute temperature}. \\
+A rather counterintuitive result at negative absolute temperatures concerns the direction of heat flow. Consider two systems $\mathcal{S}_1$ and $\mathcal{S}_2$ isolated and individually in thermal equilibrium at temperatures $T_1$ and $T_2$ respectively. We say that $\mathcal{S}_1$ is \textit{hotter} and $\mathcal{S}_2$ is \textit{colder} if, when 
+$\mathcal{S}_1$ and $\mathcal{S}_2$ are put into contact, the heat flows from $\mathcal{S}_1$ to $\mathcal{S}_2$, and viceversa. When $\mathcal{S}_1$ and $\mathcal{S}_2$ are put into contact the change in $\mathcal{S}_1$'s entropy is $\delta S_1 = \frac{\delta Q}{T_1}$ and in $\mathcal{S}_2$'s is $\delta S_2 = -\frac{\delta Q}{T_2}$. If the process happens keeping 
+the system $\mathcal{S} = \mathcal{S}_1 + \mathcal{S}_2$ thermally isolated from the environment, then we know that $\delta S = \delta S_1 + \delta S_2 > 0$ because of the second law of thermodynamics, which implies 
+\begin{equation*}
+    \delta Q \ \left(\frac{1}{T_1} - \frac{1}{T2}\right) > 0
 \end{equation*}
+One can now note that
+\begin{enumerate}
+    \item If $T_1, T_2 > 0$ and $T_1 > T_2$ then it must be $\delta Q < 0$
+    \item If $T_1, T_2 < 0$ and $T_1 > T_2$ then it must be $\delta Q > 0$
+    \item If $T_1 > 0$ and $T_2 < 0$ then it must be $\delta Q > 0$
+\end{enumerate}
+According to the convention that $\delta Q > 0$ means that the system absorbs a heat $\delta Q$, condition $1)$ means that heat flows from the system at negative temperature to the one at positive temperature or, in other words, that
+systems at negative temperatures are hotter than those at positive ones. Instead, condition $2)$ means that when two systems at negative temperatures are put into contact, the system at lower temperature gives heat to the one at higher temperature. If one would make
+a hierarchy of "hotness" of systems depending on the temperature, it would be 
+\begin{equation*}
+    0^+ < +\infty < -\infty < 0^-
+\end{equation*}
+This fact will be further explored in \hyperref[sec:TLS]{section 3}.
+
+\subsubsection*{Intuitive interpretation of thermodynamic temperature}
+Here I want to provide an insight into the meaning of the formal definition $\frac{1}{T} = \frac{\partial S(E)}{\partial E}$. According to this definition, the temperature is 
+a measure of the tendency of a system to increase/decrease entropy when an amount of energy is added. When the temperature is positive, adding energy to the system always 
+increases the entropy of the system, giving it access to more states. A negative temperature, on the other side, symbolizes the fact that the system decreases its entropy when an amout of energy is added: in other 
+words this means that the number of accessible states for the system decreases as the energy increases. One can imagine that if the maximum energy state of a system is realised only by one or few microstates, the systems might admit a decreasing 
+entropy as a function of energy, hence admitting negative temperatures. This idea will be formalized in the the \emph{Ramsey}'s criteria which provide the conditions under which a system admits negative temperature.
