@@ -1,0 +1,73 @@
+The temperature definition via
+\begin{equation*}
+    \frac{1}{T} = \frac{\partial S(E)}{\partial E}
+\end{equation*}
+is strictly dependent on the definition of the entropy and the existence of negative temperatures is mainly a consequence of this definition. 
+It was already discussed in section \ref{sec:temperature} why it is legitimate to define the temperature as the derivative of the entropy with respect to the energy. The purpose of this section, on the other side,
+is to discuss the definition of the entropy with particular regards to the definitions given by Gibbs and Boltzmann (ADD REFERENCES) since they have direct consequences on the existence of negative temperatures. \\
+\subsection*{Boltzmann's framework}
+The conceptual basis for the Boltzmann's approach to statistical mechanics presented in Boltzmann's paper (1877b) relies on the attempt to explain the Second Law of thermodynamics via probability calculus. \\
+To introduce the idea let us consider a system of $N$ particles and let us work in a $6N$ dimensional phase space with coordinates $q_1,...,q_{3N}, p_1, ... p_{3N}$ and let us consider also the $\mu$-space associated to each particle in the system. \\
+Let us parition each $\mu$-space into $m$ disjoint rectangular cells of volume $\Delta\omega$ so that $\mu = \omega_1 \cup ... \cup \omega_m$ and each cell $\omega_i$ is charaterized by an energy value $\epsilon_i$. Once specifying the mechanical state of the system, a point $x \in \Gamma$, one can 
+associate a collection of $N$ points in the $\mu$-spaces, one for each particle. For each $x$, also called \emph{microstate} of the system, one can define a \emph{macrostate} for the system by specifying the number of particles $n_i$ included in each cell $\omega_i$ in the $\mu$-space. 
+Formally $Z = (n_1, ... , n_m)$ where $n_i$ is the number of particles in the cell $\omega_i$. \\
+By this definition it is clear that more than one microstate can describe the same macrostate of the system. For each macrostate $Z_0$ the corresponding phase space volume, that is the set of corresponding microstates, is 
+\begin{equation*}
+    \Gamma_{Z_0} \equiv \{x \in \Gamma : Z(x) = Z_0\}
+\end{equation*}
+The Boltzmann's entropy of a system in a macrostate $Z$ is then defined as
+\begin{equation*}
+    S = k_B \ln\left( \text{Vol}(\Gamma_Z)\right)
+\end{equation*}
+\subsection*{Gibbs' framework}
+Gibbs' approach to statistical mechanics is based on the idea of a statistical ensemble. To introduce this concept
+let us work again in a phase space $\Gamma$ and describe the system via $3N$ canonical coordinates, so that $\Gamma$ is a $6N$ dimensional space. A point in $\Gamma$ denotes
+a precise configuration of the system and it is referred to as a \emph{representative point}. \\
+A given macroscopic configuration for the system can correspond to multiple microscopic configurations of the system, that is multiple points in the $\Gamma$ space might correspond to the same macroscopic state. \\
+In other words, when specifying a precise macroscopic configuration, we are not referring to one system, but rather to a collection of systems which we call an \emph{ensemble}. \\
+An ensemble is conveniently described my means of a \emph{density function} $\rho(q, p ,t)$ such that $\rho(q, p, t) d^{3N}qd^{3N}p$ is the number of representative points in a phase space volume $d^{3N}qd^{3N}p$. \\
+Given the value of $\rho$ at time $t=0$, the evolution of the function is completely determined by means of the Hamilton equation 
+\begin{gather*}
+    \frac{dp_i}{dt} = -\frac{\partial \mathcal H}{\partial q_i} \\
+    \frac{dq_i}{dt} = \frac{\partial \mathcal H}{\partial p_i}
+\end{gather*}
+More precisely the evolution of $\rho$ is determined by the \emph{Liouville's theorem} which states that
+\begin{equation}
+    \frac{\partial \rho}{\partial t} + \sum_{i=1}^{3N} \left(\frac{\partial \rho}{\partial p_i}\dot p_i + \frac{\partial \rho}{\partial q_i} \dot q_i\right) = 0
+\end{equation}
+or 
+\begin{equation*}
+    \frac{\partial \rho}{\partial t} = \left\{H, \rho\right\}
+\end{equation*}
+ADD PROOF OF THE Liouville's theorem. \\
+\vspace{10pt}
+In developing his theory, Gibbs' main goal was to produce a rational fundation for thermodynamics. Hence, Gibbs's work was guided by analogies between his theory and thermodynamics. \\
+In his book \cite{gibbs_2010} Gibbs derived a relation in the canonical ensemble that is
+\begin{equation}
+    d\left\langle H \right\rangle = \theta d\sigma - \sum_i \left\langle A \right\rangle da_i
+    \label{eq:fundamentaleq_Gibbs}
+\end{equation}
+which is formally analogue to the fundamental equation of thermodynamics
+\begin{equation*}
+    dU = TdS + \sum_i F_i da_i
+\end{equation*}
+where $\left\langle H \right\rangle$ in equation \ref{eq:fundamentaleq_Gibbs} denotes the expectation value of the hamiltonian in the canonical ensemble.
+The analogy suggests that $\theta$, the so called \emph{modulus of the ensemble}, can be identifies as the temperature of the system and  and $\sigma$, defined as
+\begin{equation*}
+    \sigma[p_{\theta}] = - \int p_{\theta}(x) \ln \rho_{\theta}(x) \, dx 
+\end{equation*}
+can be identified as the entropy of the system, namely the \emph{Gibbs entropy}. \\
+One important point to note is that in the Gibbs' entropy is not a function on the phase space but rather a functional on the ensemble density $\rho_{\theta}$. This implies that there is no function $\chi$ on the phase space such that 
+\begin{equation*}
+    \left\langle \chi \right\rangle_{\theta} = \sigma[\rho_{\theta}] \quad \forall \theta
+\end{equation*}
+The next step is to understand whether an equation such \ref{eq:fundamentaleq_Gibbs} can be obtained in the microcanonical ensemble. Gibbs proposed (see \cite{gibbs_2010} page 124-128, 169,171) the following definitions
+\begin{gather*}
+    T \quad \longleftrightarrow \quad \left(\frac{\partial \ln \Omega(E)}{\partial E}\right)^{-1} \\
+    S \quad \longleftrightarrow \quad \ln \Omega(E)
+\end{gather*}
+where 
+\begin{equation*}
+    \Omega(E) \equiv \int_{H(x) \leq E} \, dx
+\end{equation*}
+is called \emph{integrated density of states}. 
