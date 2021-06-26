@@ -12,11 +12,11 @@ where $n_1 + n_2 = N$. \\
 One macrostate of the system is thus identified by its energy and the total number of particles. The number of microstates corresponding 
 to one given microstate is the number of ways in which one can rearrange the particles in a way such that the total energy remains fixed, that is 
 \begin{equation*}
-    \Omega(E, N) = \frac{N!}{N_1!N_2!} = \frac{N!}{N_1! \, (N-n_1)!}
+    \Omega(E, N) = \frac{N!}{n_1!n_2!} = \frac{N!}{n_1! \, (N-n_1)!}
 \end{equation*}
 which corresponds to the Boltzmann entropy 
 \begin{equation}
-    S(E, N) = k_B\ln\left(\frac{N!}{N_1! \, (N-n_1)!}\right)
+    S(E, N) = k_B\ln\left(\frac{N!}{n_1! \, (N-n_1)!}\right)
     \label{eq:TLS_entropy_N}
 \end{equation}
 In the limit of large $N$ the last expression can be expanded using using Stirling's formula $\ln(N!) \approx N\ln N$ which yields 

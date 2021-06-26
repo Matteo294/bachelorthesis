@@ -31,7 +31,7 @@ int main(){
         cout << "Spins up: " << S.nplus << "\t" << "Energy: " << S.Hamiltonian() << "\t" << "Expected: " << energies[n] << endl; 
         old_energy = S.Hamiltonian();
         new_energy = old_energy;
-        deltaE = 0;
+        deltaE = 0.0;
         Esum = 0.0;
         for(int i=0; i<ncycles; i++){
             idx = rand()%nspins; // index of the spin to flip
@@ -52,7 +52,7 @@ int main(){
             //energies[i] = (double) Esum/(i+1);   
         }
         cout << "Demon energy: " << S.demon_energy << "\t";
-        cout << "N up:\t" << S.nplus  << "\t Energy: " << S.Hamiltonian() << endl;
+        cout << "N up:\t" << S.nplus  << "\t Energy: " << S.Hamiltonian() << endl << endl;
         myfile.close();
     }
     return 0;

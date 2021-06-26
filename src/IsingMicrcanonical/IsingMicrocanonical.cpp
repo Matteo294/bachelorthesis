@@ -25,6 +25,11 @@ IsingMicrocanonical::IsingMicrocanonical(double E, int N, double J, double B) : 
     this->demon_energy = this->E + this->N*0.5;*/
 }
 
+double IsingMicrocanonical::Entropy(){
+    double nmin = this->N - this->nplus;
+    return this->N*log(this->N) - this->nplus*log(this->nplus) - nmin*log(nmin);
+}
+
 double IsingMicrocanonical::Hamiltonian(){
     double s1 = 0.0;
     double s2 = 0.0;
@@ -33,7 +38,7 @@ double IsingMicrocanonical::Hamiltonian(){
         s2 += this->states[i]*this->states[i+1];
     }
     s1 += this->states[this->N-1];
-    return s1*this->B - s2*this->J;
+    return s1*this->B - s2*this->J + this->demon_energy;
 }
 
 void IsingMicrocanonical::flip(int idx){
