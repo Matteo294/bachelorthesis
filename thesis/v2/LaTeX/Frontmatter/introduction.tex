@@ -1,0 +1,28 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                                                         %
+% INTRODUCTION                                            %
+%                                                         %
+% This file is part of a BSc Thesis Project. See the      %
+% LICENSE file for more information about licensing.      %
+%                                                         %
+% Author:     Matteo Seclì <secli.matteo@gmail.com>       %
+% A.Y.:       2014/2015                                   %
+% URL:        https://github.com/matteosecli/QMC          %
+%                                                         %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\chapter{Introduction}
+
+The aim of this work is to introduce the use of the Variational Monte Carlo (VMC) method in the analysis of physical systems. In particular, we focus here on quantum dots with $N = 2$ and $N = 6$ electrons.
+
+The first chapter contains a brief introduction about these devices, giving insights about construction methods and physical modeling. The discussion proceeds by introducing a first model, called the \emph{shell-model}, that explains why we have a better stability for certain numbers of electrons and justifies the fact that we are restricting our discussion to quantum dot systems of only $N = 2$ and $N = 6$ electrons (and possibly $12, 20, \ldots$). These particular systems are called the \emph{closed-shell systems}.
+
+Then, a model called the \emph{Coulomb blockade model} is introduced in order to explain characteristic oscillations in conductance measurements. The model is explained both in an intuitive and in a more systematical way.
+
+At the end of the first chapter we show some results derived from both experiments and theoretical and numerical calculations, that justify the fact the potential inside our quantum dots is commonly shaped as a two-dimensional harmonic oscillator.
+
+The second chapter is dedicated to quantum mechanical considerations about the electron system and we introduce the variational principle and the Metropolis algorithm, both in its brute-force sampling and importance sampling variants. 
+
+The third and the fourth chapters show the calculation results for the $N=2$ and the $N=6$ systems, respectively. We will begin with two electrons confined in a pure two-dimensional isotropic harmonic potential, with and without the repulsive interaction, developing a simple trial wave-function and a basic program that runs our calculations. Then we are going to improve the trial wave-function adding the so-called \emph{Jastrow factor}, and finally we are going to extend the entire class of wave-functions and the program itself to a given number of electrons (those corresponding to closed-shell systems). After that we are going to improve our sampling, switching from a brute-force approach to the clever \emph{importance sampling}.
+
+Chapter five presents a brief analysis of our results in comparison with the virial theorem, while in chapter six we develop a first attempt at improving the code. This is done by exploiting the mathematical properties of the trial wave-function and the diffusive quantum-force, in order to simplify the calculation of the derivatives.

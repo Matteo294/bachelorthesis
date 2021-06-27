@@ -1,0 +1,165 @@
+The purpose of this section is to provide a rigorous definition of temperature. The definition subsequently given is general and holds for every thermodynamical system.
+\subsubsection*{Temperature as an equilibrium property}
+Temperature can be more sistematically defined starting from the concept of \emph{equilibrium}. We consider a thermodynamic system to be in equilibrium when 
+no changes are observed in any macroscopic observable and when the system does not exchange heat nor work with the environment. In particular we say that the system is at \emph{thermal equilibrium} when no heat is exchanged by the system, and
+at \emph{mechanical equilibirum} when no work is done by or on the system. \\
+Let us consider three systems $A, B, C$ whose equilibrium properties are described by the variables
+$\{X_1, X_2, \dots\}$, $\{Y_1, Y_2, \dots\}$ and $\{Z_1, Z_2, \dots\}$ respectively. \\
+If $A$ and $B$ are in equilibrium for some precise values of the coordinates $\{X_1, X_2, \dots\}$ and $\{Y_1, Y_2, \dots\}$, then there must be a relation between $\{X_1, X_2, \dots\}$ and $\{Y_1, Y_2, \dots\}$ that connects the two set of values uniquely. Let us express this relation as
+\begin{equation}
+    f_{AB}(X_1, X_2, \dots, Y_1, Y_2, \dots) = 0
+    \label{eq:constrain1}
+\end{equation}
+In an analogous manner, if $B$ and $C$ are in equilibrium for some values $\{Y_1', Y_2', \dots\}$ and $\{Z_1, Z_2, \dots\}$ of the coordinates, then there must be a constrain on the values $\{Y_1', Y_2', \dots\}$ and $\{Z_1, Z_2, \dots\}$, which we express as
+\begin{equation}
+    f_{BC}(Y_1', Y_2', \dots, Z_1, Z_2, \dots) = 0
+    \label{eq:constrain2}
+\end{equation}
+The equations above can be inverted to espress one thermodynamic coordinate as a function of the others, or in other words, the above expressions may be written as
+\begin{gather*}
+    Y_1 = g_{AB} (X_1, X_2, \dots, X_N,, Y_2, \dots) \\
+    Y_1' = g_{BC} (Y_2', \dots Y_N', Z_1, Z_2, \dots)
+\end{gather*}
+Now let us bring the system $B$ in the same state in both cases, which means imposing $Y_1 = Y_1'$ and $Y_2 = Y_2'$, ... The last two equations implies that 
+\begin{equation}
+    g_{AB} (X_1, X_2, \dots X_N, Y_2, \dots) = g_{BC} (Y_2, \dots, Y_N, Z_1, Z_2, \dots)
+    \label{eq:equality_of_g}
+\end{equation}
+or
+\begin{equation*}
+    G_{ABC} (X_1, X_2, \dots, X_N, Y_2, \dots, Z_1, Z_2, \dots) = 0
+\end{equation*}
+One can use this relation to express $X_1$ as 
+\begin{equation}
+    X_1 = h_{ABC}(X_2, \dots, X_N, Y_2, \dots, Z_1, Z_2)
+    \label{eq:X1_equilibrium_ABC}
+\end{equation}
+According to the zeroth principle of thermodynamics if $A$ and $B$ are in equilibrium and $B$ and $C$ are in equilibrium then $A$ and $C$ are in equilibrium 
+\footnote{or, alternatively, equilibrium is an equivalence relation}. This means that the constrains \ref{eq:constrain1}, \ref{eq:constrain2}, lead to a new constrain between $A$ and $C$
+there must be a constrain on the values ${X_1, X_2, \dots}$, ${Z_1, Z_2, \dots}$ which can be expressed as 
+\begin{equation*}
+    f_{AC} (X_1, X_2, \dots, Z_1, Z_2, \dots) = 0
+\end{equation*}
+which means that $X_1$ can be expressed as
+\begin{equation}
+    X_1 = g_{AC} (X_2, \dots, X_N, Z_1, Z_2, \dots)
+    \label{eq:X1_equilibrium_AC}
+\end{equation}
+and imposing the equality between \ref{eq:X1_equilibrium_ABC} and \ref{eq:X1_equilibrium_AC}
+\begin{equation*}
+    g_{AC} (X_2, \dots, X_N, Z_1, Z_2, \dots) = h_{ABC}(X_2, \dots X_N, Y_2, \dots, Y_N, Z_1, Z_2, ...)
+\end{equation*}
+The term on the lefts does not depend on the coordinates of $B$. This means that both $g$ functions in equation \ref{eq:equality_of_g} must be of the type
+\begin{gather*}
+    g_{AB}(X_1, X_2, \dots, Y_2, \dots) = \Theta(X_1, X_2, \dots) + \phi(Y_2, \dots) \\
+    g_{BC}(Y_2, \dots, Z_1, Z_2, \dots) = \Theta(Z_1, Z_2, \dots) + \phi(Y_2, \dots)
+\end{gather*}
+so that the dependence on $\{Y\}$ gets cancelled out when equating the two functions leading to 
+\begin{equation*}
+    \Theta_A(X_1, X_2, \dots) = \Theta_C(Z_1, Z_2, \dots)
+\end{equation*}
+We started this reasoning by assuming equilibrium between $A-B$ and $B-C$, but one could repeat this reasoning by assuming for example
+equilibrium between $A-C$ and $B-C$ obtaining an analogous result in terms of $\{Y_1, Y_2, \dots\}$. Because of the properties of the equivalence relation,
+one can extend the reasoning to an arbitrary number of systems. This means that if $N$ systems are in equilibrium, then there must be a function $\Theta$ such that
+\begin{equation*}
+    \Theta_A(X_1, X_2, \dots) = \Theta_B(Y_1, Y_2, \dots) = \Theta_C(Z_1, Z_2, \dots) = \dots
+\end{equation*}
+Let us call this function \emph{empirical temperature}, and its value on a set of coordinates identifies a particular equivalence class of systems at equilibrium. \\
+What just proven shows that systems at equilibrium are identified by the same value of a certain function $\Theta$. By the way no specifications are given about the origin 
+of this function and which precise value it has for a given set of systems at equilibrium. In fact there are multiple ways to define the values of such function, leading
+to many \emph{temperature scales}. \\
+An example of a possible way to define a scale of temperature is the one that concerns ideal gases. Practically it consists in assigning a value $\Theta = 273.16$ degrees Kelvin (K) at the triple point of water (coexistence of ice-water-gas) and then
+other values of temperature for ideal gases are defined via the relation 
+\begin{equation*}
+    T(K) = \lim_{P \to 0} 273.16 \times \frac{(PV)_{system}}{(PV)_{ice-water-gas}}
+\end{equation*}
+because for an ideal gas $T \propto PV$. \\
+Another possible definition of the function $\Theta$, the one relevant for what follows, will be presented later in the next section.
+
+\subsubsection*{Thermodynamic temperature}
+Once introducing an entropy as a function of the energy $S(E)$ it is possible to define a so called \emph{thermodynamic temperature} via the relation $\frac{1}{T} = \frac{\partial S}{\partial E}$.
+To see why this makes sense it is convenient to look at this example. \\
+First let us consider a system isolated from the environment, so that it cannot exchange heat or work (energy fixed). Let us indicate a generical
+state of the system by the microscopic coordinates $\ve{x} = (q_1, \dots, q_n, p_1, \dots, p_n)$ where $(q_i, p_i)$ is a pair of canonical coordinates. If $\ham(\ve{x})$ denotes the hamiltonian of the system,
+the condition
+\begin{equation}
+    \ham(\ve{x}) = E
+    \label{eq:microcanonical_condition}
+\end{equation}    
+for a certain value of energy $E$, defines a microcanonical ensemble. \\
+The central postulate of a priori probability in statistical mechanics states that all the microstates satisfying \ref{eq:microcanonical_condition} are equally probable. In other words, one can
+define a probability density function
+\begin{equation*}
+    p(E, \ve x) = \frac{1}{\Omega(E, \ve x)} \ \delta(H(\ve x) - E)
+\end{equation*}
+where $\Omega(E, \ve x)$ denotes the volume of the phase space satisfying equation \ref{eq:microcanonical_condition}. \\
+We also assume the Boltzmann definition of entropy \footnote{This assumption is non trivial and will be deeply discussed in section SECTION}
+\begin{equation}
+    S(E, \ve x) = k_B \log(\Omega(E, \ve x))
+    \label{eq:Boltzmann_entropy}
+\end{equation}
+Let us now consider two systems with fixed energies $E_1$, $E_2$ when separated. By putting them into contact and allowing them exchanging energy, one can create another system 
+with fixed energy $E = E_1 + E_2$ which can be studied in the microcanonical ensemble.
+For fixed values $E_1$ and $E_2 = E - E_1$ the phase space volume allowed for the system is 
+\begin{equation*} 
+    \Omega_{E_1}(E, \ve x) = \Omega_1(E_1, \ve x_1) \cdot \Omega_2(E_2, \ve x_2)
+\end{equation*}
+but $E_1$ (and as a consequence $E_2 = E - E_1$) is free to move between $0$ and $E$, hence the total phase space volume is given by an integral sum of the volumes at fixed $E_1$ \\
+\begin{gather*}
+    \Omega(E, \ve x) = \int_0^E \, dE_1 \int_0^E \, dE_2 \ \Omega_1(E_1, \ve x_1) \ \Omega_2(E_2, \ve x_2) \ \delta(E_1 + E_2 - E) = \\
+    = \int_0^E \, dE_1 \ \Omega_1(E_1, \ve x_1) \ \Omega_2(E - E_1, \ve x_2)
+\end{gather*}
+By using now equation \ref{eq:Boltzmann_entropy} the last equation can be written as 
+\begin{equation*}
+    \Omega(E, \ve x) = \int_0^E \, dE_1 \ e^{(S_1(E_1) + S_2(E-E_1))/k_B}
+\end{equation*}
+In the limit $N \to +\infty$ the integral becomes sharply peaked around a value $E_1^*$ and it can be evaluated using the Laplace's method
+\begin{equation*}
+    \Omega(E, \ve x) \approx C e^{(S_1(E_1^*) + S_2(E-E_1^*))/k_B}
+\end{equation*}
+The energy value that maximes $\Omega(E, \ve x)$ is the one that is represented by the largest number of microstates, hence the most probable or, in other words, the one that it is most likely at equilibrium. This value corresponds to the maximum of the exponential factor $S_1(E_1^*) + S_2(E-E_1^*)$ and can then be found as 
+\begin{equation*}
+    0 = \frac{\partial}{\partial E_1}(S_1(E_1) + S_2(E-E_1)) = \frac{\partial S_1(E_1)}{\partial E_1} - \frac{\partial S_2(E_2)}{\partial E_2} 
+\end{equation*}
+or
+\begin{equation*}
+    \frac{\partial S_1(E_1)}{\partial E_1} = \frac{\partial S_2(E_2)}{\partial E_2} 
+\end{equation*}
+Hence any two systems at equilibrium satisfies this last equation. For what told in the previous section the function 
+$\frac{\partial S}{\partial E}$ must be an empirical temperature or, better, because of dimensional arguments, an inverse of a temperature. Hence the condition can be read as 
+\begin{equation*}
+    T_1 = T_2
+\end{equation*}
+This justifies the definition given at the beginning of this section 
+\begin{equation}
+    \frac{1}{T} = \frac{\partial S(E)}{\partial E}
+    \label{eq:absolute_temperature}
+\end{equation}
+The derivation of the last equation made use only of the zeroth principle of thermodynamics and physical consideration about equilibrium: in this sense the temperature defined via \ref{eq:absolute_temperature} sometimes is also called \emph{absolute temperature}. \\
+
+\subsubsection*{Intuitive interpretation of thermodynamic temperature}
+Here I want to provide an insight into the meaning of the formal definition $\frac{1}{T} = \frac{\partial S(E)}{\partial E}$. \\
+According to this definition, the temperature is a measure of the tendency of a system to increase/decrease entropy when an amount of energy is added. When the temperature is positive, adding energy to the system always 
+increases the entropy of the system, giving it access to more states. A negative temperature, on the other side, symbolizes the fact that the system decreases its entropy when an amout of energy is added: in other 
+words this means that the number of accessible states for the system decreases as the energy increases. One can imagine that if the maximum energy state of a system is realised only by one or few microstates, the systems might admit a decreasing 
+entropy as a function of energy, hence admitting negative temperatures. This idea will be formalized in the the \emph{Ramsey}'s criteria which provide the conditions under which a system admits negative temperature. \par
+\vspace{15pt}
+A rather counterintuitive result at negative absolute temperatures concerns the direction of heat flow. Consider two systems $\mathcal{S}_1$ and $\mathcal{S}_2$ isolated and individually in thermal equilibrium at temperatures $T_1$ and $T_2$ respectively. We say that $\mathcal{S}_1$ is \textit{hotter} and $\mathcal{S}_2$ is \textit{colder} if, when 
+$\mathcal{S}_1$ and $\mathcal{S}_2$ are put into contact, the heat flows from $\mathcal{S}_1$ to $\mathcal{S}_2$, and viceversa. When $\mathcal{S}_1$ and $\mathcal{S}_2$ are put into contact the change in $\mathcal{S}_1$'s entropy is $\delta S_1 = \frac{\delta Q}{T_1}$ and in $\mathcal{S}_2$'s is $\delta S_2 = -\frac{\delta Q}{T_2}$. If the process happens keeping 
+the system $\mathcal{S} = \mathcal{S}_1 + \mathcal{S}_2$ thermally isolated from the environment, then we know that $\delta S = \delta S_1 + \delta S_2 > 0$ because of the second law of thermodynamics, which implies 
+\begin{equation*}
+    \delta Q \ \left(\frac{1}{T_1} - \frac{1}{T2}\right) > 0
+\end{equation*}
+One can now note that
+\begin{enumerate}
+    \item If $T_1, T_2 > 0$ and $T_1 > T_2$ then it must be $\delta Q < 0$
+    \item If $T_1, T_2 < 0$ and $T_1 > T_2$ then it must be $\delta Q > 0$
+    \item If $T_1 > 0$ and $T_2 < 0$ then it must be $\delta Q > 0$
+\end{enumerate}
+According to the convention that $\delta Q > 0$ means that the system absorbs a heat $\delta Q$, condition $2.$ means that heat flows from the system at negative temperature to the one at positive temperature or, in other words, that
+systems at negative temperatures are hotter than those at positive ones. Instead, condition $3.$ means that when two systems at negative temperatures are put into contact, the system at lower temperature gives heat to the one at higher temperature. If one would make
+a hierarchy of "hotness" of systems depending on the temperature, it would be 
+\begin{equation*}
+    0^+ < +\infty < -\infty < 0^-
+\end{equation*}
+This fact will be further explored in \hyperref[sec:TLS]{section 3}

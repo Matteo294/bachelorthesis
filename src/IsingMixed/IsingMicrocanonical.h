@@ -7,16 +7,17 @@ using namespace std;
 
 class IsingMicrocanonical{
     public:
-        IsingMicrocanonical(double E, int N, double J, double B);
+        IsingMicrocanonical(double E, int Nx, int Ny, double J, double B);
+        bool checkAnomaly();
         double Hamiltonian();
         double Entropy(int n=0);
         void countUp();
-        void flip(int idx);
+        void flip(int idx1, int idx2);
         double E;
         double demon_energy;
-        int N;
+        int Nrows, Ncols;
         double J;
         double B;
-        vector<double> states;
+        vector<vector<double>> states;
         int nplus;
 };
