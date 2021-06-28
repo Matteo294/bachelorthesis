@@ -26,9 +26,6 @@ IsingMicrocanonical::IsingMicrocanonical(double E, int Nrows, int Ncols, double 
     }
     
     cout << "initialized" << endl;
-    /*for(int i=0; i<this->N; i++) this->states[i] = -0.5;
-    this->nplus = this->N;
-    this->demon_energy = this->E + this->N*0.5;  */
 }
 
 double IsingMicrocanonical::Entropy(int n){
@@ -52,9 +49,9 @@ double IsingMicrocanonical::Hamiltonian(){
         s1 += this->states[i][this->Ncols-1];
     }
     for (int j=0; j<this->Ncols; j++) s1 += this->states[this->Nrows-1][j];
-    return s1*this->B - s2*this->J;
+    this->E = s1*this->B - s2*this->J;
+    return this->E;
 }
-
 
 void IsingMicrocanonical::countUp(){
     int count = 0;
@@ -66,20 +63,9 @@ void IsingMicrocanonical::countUp(){
     this->nplus = count;
 }
 
-bool IsingMicrocanonical::checkAnomaly(){
-    for (int i=0; i<this->Nrows; i++){
-        for(int j=0; j<this->Ncols; j++){
-            if ((this->states[i][j] != 0.5) && (this->states[i][j] != -0.5)) {cout << "allarme: " << i << " " << j << this->states[i][j]; return true;}
-            else return false;
-        }
-    }
-}
-
 
 void IsingMicrocanonical::flip(int idx1, int idx2){
-    //cout << "before: " << this->states[idx1][idx2] << " " << this->nplus << "\t";
     this->states[idx1][idx2] = (double) -1*this->states[idx1][idx2];
     if (this->states[idx1][idx2] > 0) this->nplus++;
     else this->nplus--;
-    //cout << "after: " << this->states[idx1][idx2] << " " << this->nplus << endl;
 }

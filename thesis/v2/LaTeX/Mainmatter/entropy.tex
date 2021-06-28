@@ -1,18 +1,20 @@
 \chapter{Definition of Entropy}
-
+\label{ch:entropy}
 The temperature definition via
 \begin{equation*}
     \frac{1}{T} = \frac{\partial S(E)}{\partial E}
 \end{equation*}
 is strictly dependent on the definition of the entropy and the existence of negative temperatures is mainly a consequence of this definition. 
-It was already discussed in section \ref{sec:temperature} why it is legitimate to define the temperature as the derivative of the entropy with respect to the energy. The purpose of this section, on the other side,
-is to discuss the definition of the entropy with particular regards to the definitions given by Gibbs and Boltzmann (ADD REFERENCES) since they have direct consequences on the existence of negative temperatures. \\
-\subsection*{Boltzmann's framework}
+It was already discussed in chapter \ref{ch:temperature} why it is legitimate to define the temperature as the derivative of the entropy with respect to the energy. The purpose of this section, on the other side,
+is to discuss the definition of the entropy with particular regards to the definitions given by Gibbs and Boltzmann. since they have direct consequences on the existence of negative temperatures. \\
+After a brief introduction over the two perspectives, which would require an entire thesis themselves to be deeply developed, the focus of the discussion will be on the comparison between the two definitions with particular emphasis on the direct consequences on the negative temperatures.
+
+\section{Boltzmann's framework}
 The conceptual basis for the Boltzmann's approach to statistical mechanics presented in Boltzmann's paper (1877b) relies on the attempt to explain the Second Law of thermodynamics via probability calculus. \\
-To introduce the idea let us consider a system of $N$ particles and let us work in a $6N$ dimensional phase space with coordinates $q_1,...,q_{3N}, p_1, ... p_{3N}$ and let us consider also the $\mu$-space associated to each particle in the system. \\
+To introduce the idea let us consider a system of $N$ particles and let us work in a $6N$ dimensional phase space with coordinates $q_1,...,q_{3N}, p_1, ... p_{3N}$ and let us consider also the $\mu$-space associated to each particle in the system, i.e. the phase space in which each single particle moves. \\
 Let us parition each $\mu$-space into $m$ disjoint rectangular cells of volume $\Delta\omega$ so that $\mu = \omega_1 \cup ... \cup \omega_m$ and each cell $\omega_i$ is charaterized by an energy value $\epsilon_i$. Once specifying the mechanical state of the system, a point $x \in \Gamma$, one can 
-associate a collection of $N$ points in the $\mu$-spaces, one for each particle. For each $x$, also called \emph{microstate} of the system, one can define a \emph{macrostate} for the system by specifying the number of particles $n_i$ included in each cell $\omega_i$ in the $\mu$-space. 
-Formally $Z = (n_1, ... , n_m)$ where $n_i$ is the number of particles in the cell $\omega_i$. \\
+associate a collection of $N$ points in the $\mu$-spaces, one for each particle (they are the same for each particle). For each $x$, also called \emph{microstate} of the system, one can define a \emph{macrostate} for the system by specifying the number of particles $n_i$ included in each cell $\omega_i$ in the $\mu$-space. 
+Formally $Z = (n_1, ... , n_m)$ where $n_i$ is the number of particles in the cell $\omega_i \subset \mu$. \\
 By this definition it is clear that more than one microstate can describe the same macrostate of the system. For each macrostate $Z_0$ the corresponding phase space volume, that is the set of corresponding microstates, is 
 \begin{equation*}
     \Gamma_{Z_0} \equiv \{x \in \Gamma : Z(x) = Z_0\}
@@ -21,7 +23,8 @@ The Boltzmann's entropy of a system in a macrostate $Z$ is then defined as
 \begin{equation*}
     S = k_B \ln\left( \text{Vol}(\Gamma_Z)\right)
 \end{equation*}
-\subsection*{Gibbs' framework}
+
+\section{Gibbs' framework}
 Gibbs' approach to statistical mechanics is based on the idea of a statistical ensemble. To introduce this concept
 let us work again in a phase space $\Gamma$ and describe the system via $3N$ canonical coordinates, so that $\Gamma$ is a $6N$ dimensional space. A point in $\Gamma$ denotes
 a precise configuration of the system and it is referred to as a \emph{representative point}. \\

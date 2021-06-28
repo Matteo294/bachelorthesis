@@ -13,30 +13,26 @@ spins_end = pd.read_csv('endconf.csv', header=None)
 spins_init = spins_init.to_numpy()
 spins_end = spins_end.to_numpy()
 
-s1_init = spins_init[:20][:]
-s2_init = spins_init[20:][:]
-s1_end = spins_end[:20][:]
-s2_end = spins_end[20:][:]
+s1_init = spins_init[:40][:]
+s2_init = spins_init[40:][:]
+s1_end = spins_end[:40][:]
+s2_end = spins_end[40:][:]
 
 plt.subplot(1, 2, 1)
 plt.imshow(s1_init, cmap=cmap1, interpolation='nearest')
 plt.xlabel('S1')
-plt.title('kT=-1e-4')
 plt.subplot(1, 2, 2)
 plt.imshow(s2_init, cmap=cmap2, interpolation='nearest')
 plt.xlabel('S2')
-plt.title('kT=1e-4')
 plt.suptitle("Before contact")
 plt.show()
 
 plt.subplot(1, 2, 1)
 plt.imshow(s1_end, cmap=cmap2, interpolation='nearest')
 plt.xlabel('S1')
-plt.title('kT=inf')
 plt.subplot(1, 2, 2)
 plt.imshow(s2_end, cmap=cmap2, interpolation='nearest')
 plt.xlabel('S2')
-plt.title('kT=inf')
 plt.suptitle("After contact")
 plt.show()
 

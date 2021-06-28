@@ -8,7 +8,6 @@ using namespace std;
 class IsingMicrocanonical{
     public:
         IsingMicrocanonical(double E, int Nx, int Ny, double J, double B);
-        bool checkAnomaly();
         double Hamiltonian();
         double Entropy(int n=0);
         void countUp();

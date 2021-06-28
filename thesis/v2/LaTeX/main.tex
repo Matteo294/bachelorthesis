@@ -44,7 +44,7 @@
 \usepackage[english]{babel}
 \usepackage{datetime}
 
-\usepackage{biblatex}
+\usepackage[backend=bibtex, sorting=none]{biblatex}
 \addbibresource{bibliography.bib}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -194,13 +194,12 @@
 \frontmatter
 \include{Frontmatter/titlepage}
 %\onehalfspacing	% Set 1.5 lines spacing for better readability
-%\include{Frontmatter/preface}
-%\include{Frontmatter/introduction}
+\include{Frontmatter/preface}
+\input{Frontmatter/introduction.tex}
 
 \tableofcontents
 
 \mainmatter
-\input{Mainmatter/introduction.tex}
 \input{Mainmatter/temperature.tex}
 \input{Mainmatter/tls.tex}
 \input{Mainmatter/PandP.tex}
