@@ -20,9 +20,10 @@ By this definition it is clear that more than one microstate can describe the sa
     \Gamma_{Z_0} \equiv \{x \in \Gamma : Z(x) = Z_0\}
 \end{equation*}
 The Boltzmann's entropy of a system in a macrostate $Z$ is then defined as
-\begin{equation*}
+\begin{equation}
     S = k_B \ln\left( \text{Vol}(\Gamma_Z)\right)
-\end{equation*}
+    \label{eq:Boltzmann_entropy}
+\end{equation}
 
 \section{Gibbs' framework}
 Gibbs' approach to statistical mechanics is based on the idea of a statistical ensemble. To introduce this concept
@@ -59,7 +60,7 @@ which is formally analogue to the fundamental equation of thermodynamics
 where $\left\langle H \right\rangle$ in equation \ref{eq:fundamentaleq_Gibbs} denotes the expectation value of the hamiltonian in the canonical ensemble.
 The analogy suggests that $\theta$, the so called \emph{modulus of the ensemble}, can be identifies as the temperature of the system and  and $\sigma$, defined as
 \begin{equation*}
-    \sigma[p_{\theta}] = - \int p_{\theta}(x) \ln \rho_{\theta}(x) \, dx 
+    \sigma[p_{\theta}] = - \int p_{\theta}(x) \ln \rho_{\theta}(x) \, dx
 \end{equation*}
 can be identified as the entropy of the system, namely the \emph{Gibbs entropy}. \\
 One important point to note is that in the Gibbs' entropy is not a function on the phase space but rather a functional on the ensemble density $\rho_{\theta}$. This implies that there is no function $\chi$ on the phase space such that 
@@ -72,7 +73,55 @@ The next step is to understand whether an equation such \ref{eq:fundamentaleq_Gi
     S \quad \longleftrightarrow \quad \ln \Omega(E)
 \end{gather*}
 where 
-\begin{equation*}
+\begin{equation}
     \Omega(E) \equiv \int_{H(x) \leq E} \, dx
-\end{equation*}
+    \label{eq:Omega_E}
+\end{equation}
 is called \emph{integrated density of states}. 
+
+\section{Consistent thermodynamics forbids negative temperatures}
+The difference between the Gibbs entropy \footnote{the Boltzmann's constant is added for dimensional arguments}
+\begin{equation}
+    S_G = k_B \ln \Omega(E)
+    \label{eq:gibbs_entropy_formula}
+\end{equation}  
+and the Boltzmann's entropy 
+\begin{equation}
+    S_B = k_B \ln \omega(E)
+    \label{eq:Boltzmann_entropy_formula}
+\end{equation}
+has a direct and important consequence on the existence of negative temperatures. Indeed it is easy to see that the integrated density of states defined in equation 
+\ref{eq:Omega_E}, that is the number of states whose energy is less than or equal to $E$, is a monotonically increasing function of the energy, hence the temperature is always positive. On the other side,
+the density of states $\omega(E)$ that enters in the Boltzmann's entropy denotes the number of states in the range $(E, E+dE)$ and there is no reason to believe that is a monotonically increasing function of the energy. In fact we have already seen
+that in the case of a non interacting two level system the Boltmann's entropy leads to negative temperatures. \\
+The choice of the correct microcanonical entropy is not a straightforward process since different definitions of entropy can be used untill they are able to reproduce the thermodynamics. \\
+In 1991 Berdichevsky \textit{et al.} \cite{original_entropy} pointed out some arguments in favour of the Gibbs' entropy, which have then been developed by many authors. The main arguments were proposed by 
+Dunkel and Hillbert in 2014 \cite{Dunkel_Hillbert} introducing the so called \emph{thermostatistical consistency condition}. \par 
+\vspace{10pt} 
+Let us suppose that the system is described by some control variables $\{E, V, A_i\}$ so that $S = S(E, V, A_i)$. By differentiating $S$ with respect to the control variables 
+\begin{equation*}
+    \begin{aligned}
+        \mathrm{d} S &=\left(\frac{\partial S}{\partial E}\right) \mathrm{d} E+\left(\frac{\partial S}{\partial V}\right) \mathrm{d} V+\sum_{i}\left(\frac{\partial S}{\partial A_{i}}\right) \mathrm{d} A_{i} \\
+        & \equiv \frac{1}{T} \mathrm{~d} E+\frac{p}{T} \mathrm{~d} V+\sum_{i} \frac{a_{i}}{T} \mathrm{~d} A_{i}
+        \end{aligned}
+\end{equation*}
+If one now considers an isoentropic process for which only energy and one control variable are allowed to change, one gets that
+\begin{equation}
+    T\left(\frac{\partial S}{\partial A_{\mu}}\right)_{E}=-\left(\frac{\partial E}{\partial A_{\mu}}\right)_{S}=-\left\langle\frac{\partial H}{\partial A_{\mu}}\right\rangle
+    \label{eq:cond1}
+\end{equation}
+Now, since
+\begin{equation*}
+    \begin{array}{l}
+        T_{\mathrm{B}}(E, V, A)=\left(\frac{\partial S_{\mathrm{B}}}{\partial E}\right)^{-1}=\frac{1}{k_{\mathrm{B}}} \frac{\omega}{\omega^{\prime}}=\frac{1}{k_{\mathrm{B}}} \frac{\Omega^{\prime}}{\Omega^{\prime \prime}} \\
+        T_{\mathrm{G}}(E, V, A)=\left(\frac{\partial S_{\mathrm{G}}}{\partial E}\right)^{-1}=\frac{1}{k_{\mathrm{B}}} \frac{\Omega}{\Omega^{\prime}}=\frac{1}{k_{\mathrm{B}}} \frac{\Omega}{\omega}
+        \end{array}
+\end{equation*}
+we expect that if one of the two definitions of the entropy satisfies the condition \ref{eq:cond1}, the other one does not. \\
+The Gibbs entropy satisfies the condition
+\begin{equation*}\begin{aligned}
+    T_{G}\left(\frac{\partial S_{G}}{\partial A_{\mu}}\right) &=\left(\frac{\partial S_{G}}{\partial E}\right)^{-1}\left(\frac{\partial S_{G}}{\partial A_{\mu}}\right)=\frac{1}{\omega} \frac{\partial}{\partial A_{\mu}} \operatorname{Tr}[\theta(E-\mathcal{H})] \\
+    &=\frac{1}{\omega} \operatorname{Tr}\left[\frac{\partial \theta(E-\mathcal{H})}{\partial A_{\mu}}\right]=-\frac{1}{\omega} \operatorname{Tr}\left[\delta(E-\mathcal{H}) \frac{\partial \mathcal{H}}{\partial A_{\mu}}\right] \\
+    &=-\operatorname{Tr}\left[\frac{\delta(E-\mathcal{H})}{\omega} \frac{\partial \mathcal{H}}{\partial A_{\mu}}\right]=-\operatorname{Tr}\left[\rho \frac{\partial \mathcal{H}}{\partial A_{\mu}}\right]=-\left\langle\frac{\partial \mathcal{H}}{\partial A_{\mu}}\right\rangle
+\end{aligned}\end{equation*}
+so the Boltzmann's cannot
