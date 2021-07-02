@@ -10,7 +10,11 @@ using namespace std;
 
 int main(){
 
+
+
     srand(time(NULL));
+
+
 
     /************************************************************/
     /********************** Output files ************************/
@@ -21,6 +25,7 @@ int main(){
     initconffile.open("initconf.csv");
     endconffile.open("endconf.csv");
     /************************************************************/
+
 
 
     /************************************************************/
@@ -46,6 +51,8 @@ int main(){
     double temp1, temp2;
     /************************************************************/
 
+
+
     /************************************************************/
     /*********************** Set up systems *********************/
     /************************************************************/
@@ -54,6 +61,7 @@ int main(){
     IsingCanonical S2(T2, nspins, J, B);
     S1.countUp();
     cout << S1.nplus << endl;
+
 
     
     // Thermalization --> bring system to equilibrium
@@ -65,6 +73,8 @@ int main(){
     // Store energy and entropy of the initial configuration
     double E1 = S1.Hamiltonian();
     double E2 = S2.Hamiltonian();
+
+
 
     // Create microcanonical systems S1+S2 (two body into contact)
     IsingMicrocanonical S(E1+E2, S1.N+S2.N, S1.N, J, B);
@@ -92,6 +102,7 @@ int main(){
     /************************************************************/
 
 
+
     /************************************************************/
     /*********** Print initial configuration to file ************/
     /************************************************************/    
@@ -103,6 +114,7 @@ int main(){
         initconffile << endl;
     }
     /************************************************************/
+    
 
 
     cout << "Starting MC cycles" << endl;
@@ -110,7 +122,6 @@ int main(){
     int n1, n2;
     
     for(int i=0; i<ncycles; i++){
-
 
         old_energy = S.Hamiltonian();
 
@@ -145,6 +156,7 @@ int main(){
     }
 
     
+
     /************************************************************/
     /*********** Print initial configuration to file ************/
     /************************************************************/ 
@@ -167,6 +179,7 @@ int main(){
     initconffile.close();
     endconffile.close();
     /************************************************************/ 
+
 
 
     /************************************************************/
