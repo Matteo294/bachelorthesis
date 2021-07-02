@@ -11,7 +11,7 @@ class IsingMicrocanonical{
         double Hamiltonian();
         double Entropy(int n=0);
         void countUp();
-        void flip(int idx1, int idx2);
+        double flip(int idx1, int idx2);
         double E;
         double demon_energy;
         int Nrows, Ncols;

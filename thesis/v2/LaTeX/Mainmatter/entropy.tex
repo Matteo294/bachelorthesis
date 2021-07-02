@@ -111,17 +111,56 @@ If one now considers an isoentropic process for which only energy and one contro
     \label{eq:cond1}
 \end{equation}
 Now, since
-\begin{equation*}
+\begin{equation}
     \begin{array}{l}
-        T_{\mathrm{B}}(E, V, A)=\left(\frac{\partial S_{\mathrm{B}}}{\partial E}\right)^{-1}=\frac{1}{k_{\mathrm{B}}} \frac{\omega}{\omega^{\prime}}=\frac{1}{k_{\mathrm{B}}} \frac{\Omega^{\prime}}{\Omega^{\prime \prime}} \\
-        T_{\mathrm{G}}(E, V, A)=\left(\frac{\partial S_{\mathrm{G}}}{\partial E}\right)^{-1}=\frac{1}{k_{\mathrm{B}}} \frac{\Omega}{\Omega^{\prime}}=\frac{1}{k_{\mathrm{B}}} \frac{\Omega}{\omega}
+        T_{\mathrm{B}}(E, V, A)=\left(\frac{\partial S_{\mathrm{B}}}{\partial E}\right)^{-1} = \frac{1}{k_{\mathrm{B}}} \frac{\Omega^{\prime}}{\Omega^{\prime \prime}} \\
+        T_{\mathrm{G}}(E, V, A)=\left(\frac{\partial S_{\mathrm{G}}}{\partial E}\right)^{-1}=\frac{1}{k_{\mathrm{B}}} \frac{\Omega}{\Omega'}
         \end{array}
-\end{equation*}
-we expect that if one of the two definitions of the entropy satisfies the condition \ref{eq:cond1}, the other one does not. \\
-The Gibbs entropy satisfies the condition
+    \label{eq:temperatures_definition}
+\end{equation}
+where the prime indicates the differentiation with respect to the energy of the system, one has that 
+\begin{gather*}
+    T_B \left(\frac{\partial S_B}{\partial A_{\mu}}\right) = \frac{1}{\Omega''} \frac{\partial \Omega'}{\partial A_{\mu}} \\
+    T_G \left(\frac{\partial S_G}{\partial A_{\mu}}\right) = \frac{1}{\Omega'} \frac{\partial \Omega}{\partial A_{\mu}}
+\end{gather*}
+so in general we expect that if one of the two definitions of the entropy satisfies condition \ref{eq:cond1}, the other one does not, and it is easy to see that the Gibbs entropy does
 \begin{equation*}\begin{aligned}
     T_{G}\left(\frac{\partial S_{G}}{\partial A_{\mu}}\right) &=\left(\frac{\partial S_{G}}{\partial E}\right)^{-1}\left(\frac{\partial S_{G}}{\partial A_{\mu}}\right)=\frac{1}{\omega} \frac{\partial}{\partial A_{\mu}} \operatorname{Tr}[\theta(E-\mathcal{H})] \\
     &=\frac{1}{\omega} \operatorname{Tr}\left[\frac{\partial \theta(E-\mathcal{H})}{\partial A_{\mu}}\right]=-\frac{1}{\omega} \operatorname{Tr}\left[\delta(E-\mathcal{H}) \frac{\partial \mathcal{H}}{\partial A_{\mu}}\right] \\
     &=-\operatorname{Tr}\left[\frac{\delta(E-\mathcal{H})}{\omega} \frac{\partial \mathcal{H}}{\partial A_{\mu}}\right]=-\operatorname{Tr}\left[\rho \frac{\partial \mathcal{H}}{\partial A_{\mu}}\right]=-\left\langle\frac{\partial \mathcal{H}}{\partial A_{\mu}}\right\rangle
 \end{aligned}\end{equation*}
-so the Boltzmann's cannot
+Another argument in favour of the Gibbs' entropy, still proposed by Dunkel and Hillbert \cite{Dunkel_Hillbert}, is that the Gibbs' entropy satisfies the generalized equipartition theorem (proof in appendix)
+\begin{equation}
+    nulla
+    \label{eq:equipartition}
+\end{equation}
+while the Boltzmann's does not. To see this one can consider the simple example of an ideal gas confined in a cubic box of side $L$. In this case the hamiltonian reads 
+\begin{equation*}
+    \mathcal{H}(t,\ve q,\ve p) = \sum_i \frac{\ve{p}_i^2}{2m} + V(\ve q_i)
+\end{equation*}
+where 
+\begin{equation*}
+    V(\ve{q}_i) = 
+    \begin{cases}
+        0 \qquad \text{if } \ve q_i \in \text{box} \\
+        +\infty \qquad \text{otherwise}
+    \end{cases}
+\end{equation*}
+The integrated density of states, that is the number of states with energy less than or equal to $E$, can be computed as 
+\begin{gather*}
+    \Omega(E) = \frac{1}{h^{3N}} \, \int d^{3N}p \int d^{3N}q \quad \theta(\mathcal{H}(t, \ve q, \ve p) - E) = \\ = \frac{V^N}{h^{3N}} \, \int d^{3N}p \quad \theta\left(\sum_i \frac{\ve{p}_i^2}{2m}- E\right) 
+    = \frac{V^N \, (2\pi mE)^{3N/2}}{h^{3N} \, \Gamma(\frac{3N}{2}+1)}
+\end{gather*}
+so that the density of states is 
+\begin{gather*}
+    \omega(E) = \frac{\partial \Omega(E)}{\partial E} = 
+\end{gather*}
+One can now calculate the two temperatures using \ref{eq:temperatures_definition}
+\begin{equation*}
+    T_B, T_G
+\end{equation*}
+and rearrangin terms 
+\begin{equation}
+    eq1, eq2
+\end{equation}
+leading to the desired result.

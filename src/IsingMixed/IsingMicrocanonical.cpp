@@ -1,6 +1,6 @@
 #include "IsingMicrocanonical.h"
 
-IsingMicrocanonical::IsingMicrocanonical(double E, int Nrows, int Ncols, double J, double B) : states(Nrows, vector<double>(Ncols, -0.5)){
+IsingMicrocanonical::IsingMicrocanonical(double E, int Nrows, int Ncols, double J, double B) : states(Nrows, vector<double>(Ncols, -1)){
     srand(time(NULL));
     this->E = E;
     this->Ncols = Ncols;
@@ -13,17 +13,19 @@ IsingMicrocanonical::IsingMicrocanonical(double E, int Nrows, int Ncols, double 
     this->nplus = 0;
 
     int idx1, idx2;
-    double energy = -0.5*(this->Nrows + this->Ncols); // All spins down at the beginning
+    double energy = this->Hamiltonian(); // All spins down
     int flag = 1;
+    // Flip spins untill reach the desired energy
     while (flag){      
         idx1 = rand()%Ncols;
         idx2 = rand()%Nrows;
         if (this->states[idx1][idx2] < 0) {
-            //this->flip(idx1, idx2);
-            energy += (double) 1;
-            if (energy >= this->E) flag = 0;
+            this->flip(idx1, idx2);
+            energy = this->Hamiltonian();
+            if (energy >= this->E) {flag = 0; this->flip(idx1, idx2);}
         }
     }
+    this->E = this->Hamiltonian();
     
     cout << "initialized" << endl;
 }
@@ -49,7 +51,7 @@ double IsingMicrocanonical::Hamiltonian(){
         s1 += this->states[i][this->Ncols-1];
     }
     for (int j=0; j<this->Ncols; j++) s1 += this->states[this->Nrows-1][j];
-    this->E = s1*this->B - s2*this->J;
+    //this->E = s1*this->B - s2*this->J;
     return this->E;
 }
 
@@ -64,8 +66,21 @@ void IsingMicrocanonical::countUp(){
 }
 
 
-void IsingMicrocanonical::flip(int idx1, int idx2){
+double IsingMicrocanonical::flip(int idx1, int idx2){
+    double delta = 0.0;
+
+    if(idx1<this->Nrows-1) delta -= this->states[idx1+1][idx2];
+    if(idx2<this->Ncols-1) delta -= this->states[idx1][idx2+1];
+    if(idx1>0) delta -= this->states[idx1-1][idx2];
+    if(idx2>0) delta -= this->states[idx1][idx2-1];
+
+    delta = 2*this->states[idx1][idx2]*delta*(this->J != 0) -2*this->states[idx1][idx2]*(this->B != 0);
+
+    this->E += delta;
+
     this->states[idx1][idx2] = (double) -1*this->states[idx1][idx2];
     if (this->states[idx1][idx2] > 0) this->nplus++;
     else this->nplus--;
+
+    return -delta; // returns Enew - Eold
 }

@@ -7,19 +7,21 @@ from matplotlib import colors
 cmap1 = colors.ListedColormap(['red', 'blue'])
 cmap2 = colors.ListedColormap(['blue', 'red'])
 
+data = pd.read_csv('data.csv')
+
 spins_init = pd.read_csv('initconf.csv', header=None)
 spins_end = pd.read_csv('endconf.csv', header=None)
 
 spins_init = spins_init.to_numpy()
 spins_end = spins_end.to_numpy()
 
-s1_init = spins_init[:40][:]
-s2_init = spins_init[40:][:]
-s1_end = spins_end[:40][:]
-s2_end = spins_end[40:][:]
+s1_init = spins_init[:15][:]
+s2_init = spins_init[15:][:]
+s1_end = spins_end[:15][:]
+s2_end = spins_end[15:][:]
 
 plt.subplot(1, 2, 1)
-plt.imshow(s1_init, cmap=cmap1, interpolation='nearest')
+plt.imshow(s1_init, cmap=cmap2, interpolation='nearest')
 plt.xlabel('S1')
 plt.subplot(1, 2, 2)
 plt.imshow(s2_init, cmap=cmap2, interpolation='nearest')
@@ -36,13 +38,12 @@ plt.xlabel('S2')
 plt.suptitle("After contact")
 plt.show()
 
-'''
+
 plt.plot(range(len(data['E1'])), data['E1'])
 plt.show()
 
 plt.subplot(1, 2, 1)
-plt.plot(data['E1'], data['S1'])
+plt.plot(data['n'], data['T1'])
 plt.subplot(1, 2, 2)
-plt.plot(data['E2'], data['S2'])
+plt.plot(data['n'], data['T2'])
 plt.show()
-'''
