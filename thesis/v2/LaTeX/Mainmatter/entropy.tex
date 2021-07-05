@@ -1,4 +1,4 @@
-\chapter{Definition of Entropy}
+\chapter{Definition of the entropy}
 \label{ch:entropy}
 The temperature definition via
 \begin{equation*}
@@ -6,16 +6,16 @@ The temperature definition via
 \end{equation*}
 is strictly dependent on the definition of the entropy and the existence of negative temperatures is mainly a consequence of this definition. 
 It was already discussed in chapter \ref{ch:temperature} why it is legitimate to define the temperature as the derivative of the entropy with respect to the energy. The purpose of this section, on the other side,
-is to discuss the definition of the entropy with particular regards to the definitions given by Gibbs and Boltzmann. since they have direct consequences on the existence of negative temperatures. \\
-After a brief introduction over the two perspectives, which would require an entire thesis themselves to be deeply developed, the focus of the discussion will be on the comparison between the two definitions with particular emphasis on the direct consequences on the negative temperatures.
+is to discuss the definition of the entropy with particular regards to the definitions given by Gibbs and Boltzmann since they have direct consequences on the existence of negative temperatures. \\
+After a brief introduction over the two perspectives, the focus of the discussion will be on the comparison between the two definitions with particular emphasis on the direct consequences on the negative temperatures.
 
 \section{Boltzmann's framework}
 The conceptual basis for the Boltzmann's approach to statistical mechanics presented in Boltzmann's paper (1877b) relies on the attempt to explain the Second Law of thermodynamics via probability calculus. \\
 To introduce the idea let us consider a system of $N$ particles and let us work in a $6N$ dimensional phase space with coordinates $q_1,...,q_{3N}, p_1, ... p_{3N}$ and let us consider also the $\mu$-space associated to each particle in the system, i.e. the phase space in which each single particle moves. \\
 Let us parition each $\mu$-space into $m$ disjoint rectangular cells of volume $\Delta\omega$ so that $\mu = \omega_1 \cup ... \cup \omega_m$ and each cell $\omega_i$ is charaterized by an energy value $\epsilon_i$. Once specifying the mechanical state of the system, a point $x \in \Gamma$, one can 
-associate a collection of $N$ points in the $\mu$-spaces, one for each particle (they are the same for each particle). For each $x$, also called \emph{microstate} of the system, one can define a \emph{macrostate} for the system by specifying the number of particles $n_i$ included in each cell $\omega_i$ in the $\mu$-space. 
+associate a collection of $N$ points in the $\mu$-spaces, one for each particle (the spaces are the same for each particle). For each $x$, also called \emph{microstate} of the system, one can define a \emph{macrostate} $Z$ for the system by specifying the number of particles $n_i$ included in each cell $\omega_i$ in the $\mu$-space. 
 Formally $Z = (n_1, ... , n_m)$ where $n_i$ is the number of particles in the cell $\omega_i \subset \mu$. \\
-By this definition it is clear that more than one microstate can describe the same macrostate of the system. For each macrostate $Z_0$ the corresponding phase space volume, that is the set of corresponding microstates, is 
+By this definition it is clear that more than one microstate can describe the same macrostate of the system. One can associate a phase space volume to a macrostate $Z_0$, that is the set of corresponding microstates
 \begin{equation*}
     \Gamma_{Z_0} \equiv \{x \in \Gamma : Z(x) = Z_0\}
 \end{equation*}
@@ -24,12 +24,20 @@ The Boltzmann's entropy of a system in a macrostate $Z$ is then defined as
     S = k_B \ln\left( \text{Vol}(\Gamma_Z)\right)
     \label{eq:Boltzmann_entropy}
 \end{equation}
-
+In the case of a particle moving in the phase space, the microstates are counted by dividing the volume available for the particle in the phase space by the equivalent volume of one microstate, which, after quantum mechanics, it is known to be $h^3$.
+In formulas, equation \ref{eq:Boltzmann_entropy} reduces to
+\begin{equation*}
+    S(E) = k_B \ln \omega(E)
+\end{equation*}
+where
+\begin{equation*}
+    \omega(E) = \frac{1}{h^3} \int \, d^3qd^3p \ \delta(E - H(q, p))
+\end{equation*}
 \section{Gibbs' framework}
-Gibbs' approach to statistical mechanics is based on the idea of a statistical ensemble. To introduce this concept
+Gibbs' approach to statistical mechanics is based on the idea of \emph{statistical ensemble}. To introduce this concept
 let us work again in a phase space $\Gamma$ and describe the system via $3N$ canonical coordinates, so that $\Gamma$ is a $6N$ dimensional space. A point in $\Gamma$ denotes
 a precise configuration of the system and it is referred to as a \emph{representative point}. \\
-A given macroscopic configuration for the system can correspond to multiple microscopic configurations of the system, that is multiple points in the $\Gamma$ space might correspond to the same macroscopic state. \\
+A given macroscopic configuration of the system can correspond to multiple microscopic configurations, that is multiple points in the $\Gamma$ space might correspond to the same macroscopic state. \\
 In other words, when specifying a precise macroscopic configuration, we are not referring to one system, but rather to a collection of systems which we call an \emph{ensemble}. \\
 An ensemble is conveniently described my means of a \emph{density function} $\rho(q, p ,t)$ such that $\rho(q, p, t) d^{3N}qd^{3N}p$ is the number of representative points in a phase space volume $d^{3N}qd^{3N}p$. \\
 Given the value of $\rho$ at time $t=0$, the evolution of the function is completely determined by means of the Hamilton equation 
@@ -58,16 +66,17 @@ which is formally analogue to the fundamental equation of thermodynamics
     dU = TdS + \sum_i F_i da_i
 \end{equation*}
 where $\left\langle H \right\rangle$ in equation \ref{eq:fundamentaleq_Gibbs} denotes the expectation value of the hamiltonian in the canonical ensemble.
-The analogy suggests that $\theta$, the so called \emph{modulus of the ensemble}, can be identifies as the temperature of the system and  and $\sigma$, defined as
+The analogy suggests that $\theta$, the so called \emph{modulus of the ensemble}, can be identified as the temperature of the system and  and $\sigma$, which was defined as
 \begin{equation*}
     \sigma[p_{\theta}] = - \int p_{\theta}(x) \ln \rho_{\theta}(x) \, dx
 \end{equation*}
 can be identified as the entropy of the system, namely the \emph{Gibbs entropy}. \\
-One important point to note is that in the Gibbs' entropy is not a function on the phase space but rather a functional on the ensemble density $\rho_{\theta}$. This implies that there is no function $\chi$ on the phase space such that 
+The important point is that, in the Gibbs' approach, the entropy is not a function on the phase space but rather a functional on the ensemble density $\rho_{\theta}$. This implies that there is no function $\chi$ on the phase space such that 
 \begin{equation*}
     \left\langle \chi \right\rangle_{\theta} = \sigma[\rho_{\theta}] \quad \forall \theta
 \end{equation*}
-The next step is to understand whether an equation such \ref{eq:fundamentaleq_Gibbs} can be obtained in the microcanonical ensemble. Gibbs proposed (see \cite{gibbs_2010} page 124-128, 169,171) the following definitions
+In principle one can propose a couple $(\theta, \sigma)$ arbitrarilly chosen and check if relation \ref{eq:fundamentaleq_Gibbs} is satisfied. \\
+The next step is to understand whether an equation such \ref{eq:fundamentaleq_Gibbs} can be obtained in the microcanonical ensemble. Gibbs showed (see \cite{gibbs_2010} page 124-128, 169,171) that the relation is satisfied with the following definitions
 \begin{gather*}
     T \quad \longleftrightarrow \quad \left(\frac{\partial \ln \Omega(E)}{\partial E}\right)^{-1} \\
     S \quad \longleftrightarrow \quad \ln \Omega(E)
@@ -94,11 +103,11 @@ has a direct and important consequence on the existence of negative temperatures
 \ref{eq:Omega_E}, that is the number of states whose energy is less than or equal to $E$, is a monotonically increasing function of the energy, hence the temperature is always positive. On the other side,
 the density of states $\omega(E)$ that enters in the Boltzmann's entropy denotes the number of states in the range $(E, E+dE)$ and there is no reason to believe that is a monotonically increasing function of the energy. In fact we have already seen
 that in the case of a non interacting two level system the Boltmann's entropy leads to negative temperatures. \\
-The choice of the correct microcanonical entropy is not a straightforward process since different definitions of entropy can be used untill they are able to reproduce the thermodynamics. \\
+The choice of the correct microcanonical entropy is not a straightforward process since different definitions of the entropy can be used untill they are able to reproduce the thermodynamics. \\
 In 1991 Berdichevsky \textit{et al.} \cite{original_entropy} pointed out some arguments in favour of the Gibbs' entropy, which have then been developed by many authors. The main arguments were proposed by 
 Dunkel and Hillbert in 2014 \cite{Dunkel_Hillbert} introducing the so called \emph{thermostatistical consistency condition}. \par 
 \vspace{10pt} 
-Let us suppose that the system is described by some control variables $\{E, V, A_i\}$ so that $S = S(E, V, A_i)$. By differentiating $S$ with respect to the control variables 
+Let us suppose that the system is described by some control variables $\{E, V, A_i\}$ so that $S = S(E, V, A_i)$. By differentiating $S$ with respect to the control variables one obtains
 \begin{equation*}
     \begin{aligned}
         \mathrm{d} S &=\left(\frac{\partial S}{\partial E}\right) \mathrm{d} E+\left(\frac{\partial S}{\partial V}\right) \mathrm{d} V+\sum_{i}\left(\frac{\partial S}{\partial A_{i}}\right) \mathrm{d} A_{i} \\
@@ -118,23 +127,24 @@ Now, since
         \end{array}
     \label{eq:temperatures_definition}
 \end{equation}
-where the prime indicates the differentiation with respect to the energy of the system, one has that 
+where the prime indicates the differentiation with respect to the energy of the system. One has that 
 \begin{gather*}
     T_B \left(\frac{\partial S_B}{\partial A_{\mu}}\right) = \frac{1}{\Omega''} \frac{\partial \Omega'}{\partial A_{\mu}} \\
     T_G \left(\frac{\partial S_G}{\partial A_{\mu}}\right) = \frac{1}{\Omega'} \frac{\partial \Omega}{\partial A_{\mu}}
 \end{gather*}
 so in general we expect that if one of the two definitions of the entropy satisfies condition \ref{eq:cond1}, the other one does not, and it is easy to see that the Gibbs entropy does
 \begin{equation*}\begin{aligned}
-    T_{G}\left(\frac{\partial S_{G}}{\partial A_{\mu}}\right) &=\left(\frac{\partial S_{G}}{\partial E}\right)^{-1}\left(\frac{\partial S_{G}}{\partial A_{\mu}}\right)=\frac{1}{\omega} \frac{\partial}{\partial A_{\mu}} \operatorname{Tr}[\theta(E-\mathcal{H})] \\
-    &=\frac{1}{\omega} \operatorname{Tr}\left[\frac{\partial \theta(E-\mathcal{H})}{\partial A_{\mu}}\right]=-\frac{1}{\omega} \operatorname{Tr}\left[\delta(E-\mathcal{H}) \frac{\partial \mathcal{H}}{\partial A_{\mu}}\right] \\
-    &=-\operatorname{Tr}\left[\frac{\delta(E-\mathcal{H})}{\omega} \frac{\partial \mathcal{H}}{\partial A_{\mu}}\right]=-\operatorname{Tr}\left[\rho \frac{\partial \mathcal{H}}{\partial A_{\mu}}\right]=-\left\langle\frac{\partial \mathcal{H}}{\partial A_{\mu}}\right\rangle
+    T_{G}\left(\frac{\partial S_{G}}{\partial A_{\mu}}\right) &=\left(\frac{\partial S_{G}}{\partial E}\right)^{-1}\left(\frac{\partial S_{G}}{\partial A_{\mu}}\right)=\frac{1}{\omega} \frac{\partial}{\partial A_{\mu}} \int \, dx \ \theta(E-\mathcal{H}(x)) \\
+    &=\frac{1}{\omega} \int \, dx \ \frac{\partial \theta(E-\mathcal{H}(x))}{\partial A_{\mu}} = -\frac{1}{\omega} \int \, dx \ \delta(E-\mathcal{H}(x)) \frac{\partial \mathcal{H}(x)}{\partial A_{\mu}} \\
+    &=-\int \, dx \ \frac{\delta(E-\mathcal{H})}{\omega} \frac{\partial \mathcal{H}}{\partial A_{\mu}} = -\int \, dx \ \rho \frac{\partial \mathcal{H}}{\partial A_{\mu}} = -\left\langle\frac{\partial \mathcal{H}}{\partial A_{\mu}}\right\rangle
 \end{aligned}\end{equation*}
-Another argument in favour of the Gibbs' entropy, still proposed by Dunkel and Hillbert \cite{Dunkel_Hillbert}, is that the Gibbs' entropy satisfies the generalized equipartition theorem (proof in appendix)
+Another argument in favour of the Gibbs' entropy, still proposed by Dunkel and Hillbert \cite{Dunkel_Hillbert}, is that the Gibbs' entropy satisfies the generalized equipartition theorem
 \begin{equation}
-    nulla
+    \left\langle\xi_{i} \frac{\partial \mathcal{H}}{\partial \xi_{j}}\right\rangle=\delta_{i j} T
     \label{eq:equipartition}
 \end{equation}
-while the Boltzmann's does not. To see this one can consider the simple example of an ideal gas confined in a cubic box of side $L$. In this case the hamiltonian reads 
+while the Boltzmann's does not.  \\
+To see this one can consider the simple example of an ideal gas confined in a cubic box of side $L$. In this case the hamiltonian reads 
 \begin{equation*}
     \mathcal{H}(t,\ve q,\ve p) = \sum_i \frac{\ve{p}_i^2}{2m} + V(\ve q_i)
 \end{equation*}
@@ -148,19 +158,103 @@ where
 \end{equation*}
 The integrated density of states, that is the number of states with energy less than or equal to $E$, can be computed as 
 \begin{gather*}
-    \Omega(E) = \frac{1}{h^{3N}} \, \int d^{3N}p \int d^{3N}q \quad \theta(\mathcal{H}(t, \ve q, \ve p) - E) = \\ = \frac{V^N}{h^{3N}} \, \int d^{3N}p \quad \theta\left(\sum_i \frac{\ve{p}_i^2}{2m}- E\right) 
+    \Omega(E) = \frac{1}{h^{3N}} \, \int d^{3N}p \int d^{3N}q \quad \theta(E-\mathcal{H}(t, \ve q, \ve p)) = \\ = \frac{V^N}{h^{3N}} \, \int d^{3N}p \quad \theta\left(\sum_i \frac{\ve{p}_i^2}{2m}- E\right) 
     = \frac{V^N \, (2\pi mE)^{3N/2}}{h^{3N} \, \Gamma(\frac{3N}{2}+1)}
 \end{gather*}
 so that the density of states is 
 \begin{gather*}
-    \omega(E) = \frac{\partial \Omega(E)}{\partial E} = 
+    \omega(E)=\frac{\partial \Omega}{\partial E}=\frac{3 N V^{N}(2 \pi m)^{3 N / 2}}{2 h^{3} \Gamma\left(\frac{3 N}{2}+1\right)} E^{\frac{3 N}{2}-1}
 \end{gather*}
 One can now calculate the two temperatures using \ref{eq:temperatures_definition}
-\begin{equation*}
-    T_B, T_G
-\end{equation*}
-and rearrangin terms 
-\begin{equation}
-    eq1, eq2
+\begin{gather*}
+    \frac{1}{T_{G}}=\frac{\partial S_{G}}{\partial E}=\frac{\partial \ln \Omega}{\partial E}=\frac{h^{3} \Gamma\left(\frac{3 N}{2}+1\right)}{V^{N}(2 \pi m E)^{3 N / 2}} \frac{3 N V^{N}(2 \pi m)^{3 N / 2}}{2 h^{3} \Gamma\left(\frac{3 N}{2}+1\right)} E^{\frac{3 N}{2}-1} \\
+    \frac{1}{T_{B}}=\frac{\partial S_{B}}{\partial E}=\frac{\partial \ln \omega}{\partial E}=\left(\frac{3 N V^{N}(2 \pi m)^{3 N / 2}}{2 h^{3} \Gamma\left(\frac{3 N}{2}+1\right)} E^{\frac{3 N}{2}-1}\right)^{-1} \frac{3 N}{2}\left(\frac{3 N}{2}-1\right) E^{\frac{3 N}{2}-2}
+\end{gather*}
+and rearranging terms 
+\begin{equation}\begin{gathered}
+    E=\frac{3 N}{2} T_{G} \\
+    E=\left(\frac{3 N}{2}-1\right) T_{B}
+\end{gathered}
+\label{eq:equipartition_results}
 \end{equation}
-leading to the desired result.
+showing that only the Gibbs' entropy satisfies the equipartition theorem. \par
+\vspace{10pt}
+The fact that the Gibbs' entropy was "the correct entropy" created some disturb. This was mainly because of the unphysical meaning of the Gibbs' entropy. Why should one 
+take account of the states with a different energy of the system when calculating the number of microstates available for a given energy $E$? \\
+Another position on the issue was indeed argued by Frenkel and Warren \cite{Frenkel} who not only showed that Boltzmann's entropy satisfies the thermodynamic condition in the thermodynamic limit, but also that the Gibbs' entropy fails to meet a basic thermodynamic criterion which is 
+the equality of the temperatures of two systems in reciprocal equilibrium. \\
+Let us consider a two level system $\mathcal{S}_1$ with bounded phase space (e.g. a two levels system) in an inverted population state. According to what seen in chapter \ref{ch:TLS}, the system is described by a negative temperature, say $T_{1,B}$, using the Boltzmann's definition. Instead if one makes use of the Gibbs' definition of temperature, the latter is certainly positive since $T_G$ does not admit negative values: let us call this value $T_{1,G}$. \\
+It is then possible to create another system $\mathcal{S}_2$ with an unbounded phase space, for example a free ideal gas, such that $T_{2,G} = T_{1,G}$, but obviously $T_{2,B} \neq T_{1,B}$, since the free ideal gas does not admit negative Boltzmann's temperature. According to what told in chapter \ref{ch:temperature}, $T_{2,G} = T_{1,G}$ implies that the two systems are in equilibrium, while $T_{2,B} \neq T_{1,B}$ predicts them to be out of equilibrium. 
+When the two systems are put into contact, they are allowed to exchange heat keeping the total energy of the collective system constant. The configuration that is most probable at equilibrium is the one that maximizes the entropy of the whole system compatibly with the available energy. \\
+Since the system $\mathcal{S}_1$ is not in its maximum entropy state, when allowed to exchange heat to $\mathcal{S}_2$, it lowers its energy releasing heat increasing also $\mathcal{S}_2$'s entropy.
+This means that $\mathcal{S}_1$ and $\mathcal{S}_2$ were out of equilibrium implying the Gibbs's temperature to be wrong. \par
+\vspace{10pt}
+The only issue that needs to be solved now is to understand why the Boltzmann's entropy does not satisfy the thermodynamic consistency relation or the equipartition theorem as previously shown. Frenkel and Warren argued that the conditions are instead satisfied also by the Boltzmann's definition of entropy in the thermodynamic limit, that is for $N \gg 1$, that is the limit in which statistical mechanics is expected to connect to thermodynamics.
+This is obvious for the particular case of the ideal gas which lead to \ref{eq:equipartition_results} and it is immediate to check that the two expressions coincide in the limit of large $N$. \\
+To prove that the consistency relation is respected in the general case, let us first start by proving that, in the canonical ensemble, the following relation holds
+\begin{equation}
+    -\left.\frac{\partial F}{\partial A_{\mu}}\right|_{T}=-\left\langle\frac{\partial H}{\partial A_{\mu}}\right\rangle_{T}
+    \label{eq:entropy_eq_1}
+\end{equation}
+Since $F = -\frac{1}{\beta} \ln Z$, where
+\begin{equation*}
+    Z = \sum_x e^{-\beta H(x)}
+\end{equation*} 
+then 
+\begin{equation}
+    e^{-\beta F}=\sum_x e^{-\beta H(x)}
+    \label{eq:free_energy_rel1}
+\end{equation}
+Differentiating both members with respect to $A_{\mu}$ gives 
+\begin{equation}
+    -\left.\beta \frac{\partial F}{\partial A_{\mu}}\right|_{T} e^{-\beta F}=-\beta \sum \frac{\partial H}{\partial A_{\mu}} e^{-\beta H}
+    \label{eq:free_energy_rel2}
+\end{equation}
+and by taking the ratio of equations \ref{eq:free_energy_rel1} and \ref{eq:free_energy_rel2}, the result is proved. \\
+Now, to prove the consistency relation \ref{eq:cond1}, we need to move to the microcanonical ensemble. In this case the averages are performed as 
+\begin{equation*}
+    \langle\cdots\rangle_{E}=\frac{\int (\cdots) \delta(E-H)}{\int \delta(E-H)}
+\end{equation*}
+and the equivalent of \ref{eq:free_energy_rel1} for the entropy is
+\begin{equation*}
+    \int \delta(E-H) = e^{S_{\mathrm{B}} / k_{\mathrm{B}}}
+\end{equation*}
+One can write that
+\begin{gather*}
+    \int \, dx \ (...) \ e^{-\beta H(x)} = \int \, dE \int \, dx \ (...) \ \delta(E-H(x)) \, e^{-\beta E} =  \\
+    = \int \, dE \ e^{-\beta E} \int \, dx \ (...) \ \delta(E-H(x))
+\end{gather*}
+Let us multiply and divide the left member by $Z = e^{-\beta F}$ and the right member by $e^{-\beta E + S_B/k_B}$ obtaining
+\begin{equation}
+    e^{-\beta F}\langle\cdots\rangle_{T}=\int_{0}^{\infty} d E e^{-\beta E+S_{\mathrm{B}} / k_{\mathrm{B}}}\langle\cdots\rangle_{E}
+    \label{eq:entropy_eq_2}
+\end{equation}
+where $langle\cdots\rangle_{T}$ and $langle\cdots\rangle_{E}$ indicate the averages in the canonical and microcanonical ensemble respectively. The last equation, it the special case of $(...) = 1$ yields
+\begin{equation*}
+    e^{-\beta F} = \int e^{-\beta E+S_{\mathrm{B}} / k_{\mathrm{B}}}
+\end{equation*}
+Now, the last integral is peaked around a value $E^*$ and the higher the number of degrees of freedom in the system, the more peaked the integrand. In the
+thermodynamic limit, let us then evaluate this last integral by the saddle point method. We obtain that 
+\begin{equation*}
+    -\beta F=-\beta E+\frac{S_{\mathrm{B}}}{k_{\mathrm{B}}}
+\end{equation*}
+where $-\beta+\frac{\partial}{\partial E}\left(\frac{S_{\mathrm{B}}}{k_{\mathrm{B}}}\right)=0$ (condition for the extremum). Recalling that $\beta=\frac{1}{k_BT}$, the condition for the extremum states that 
+$\frac{1}{T} = \frac{\partial S_B}{\partial E} = \frac{1}{T_B}$. Hence
+\begin{equation}
+    F = E - TS
+    \label{eq:free_energy_def}
+\end{equation}
+where $T = T_B = \frac{\partial S_B}{\partial E}$ which is the definition of the Legendre transform of the energy with respect to the couple $T \leftrightarrow S$. \\
+In an analogous way it is possible to apply the same method to \ref{eq:entropy_eq_2} obtaining as a result that 
+\begin{equation}
+    \langle\cdots\rangle_{T} = \langle\cdots\rangle_{E}
+    \label{eq:equivalence_of_averages}
+\end{equation}
+Now, by differentiating equation \ref{eq:free_energy_def} with respect to $A_{\mu}$, one gets that
+\begin{equation*}
+    \left.\frac{\partial F}{\partial A_{\mu}}\right|_{T}=\left(1-T \frac{\partial S_{\mathrm{B}}}{\partial E}\right) \frac{\partial E}{\partial A_{\mu}}-\left.T \frac{\partial S_{\mathrm{B}}}{\partial A_{\mu}}\right|_{E} = -\left.T \frac{\partial S_{\mathrm{B}}}{\partial A_{\mu}}\right|_{E}
+\end{equation*}
+combining this result with \ref{eq:entropy_eq_1}, \ref{eq:equivalence_of_averages} and the fact that $T = T_B = \frac{\partial S}{\partial E}$, we get the desired result
+\begin{equation*}
+    \left.T_{\mathrm{B}} \frac{\partial S_{\mathrm{B}}}{\partial A_{\mu}}\right|_{E}=-\left\langle\frac{\partial H}{\partial A_{\mu}}\right\rangle_{E}
+\end{equation*}

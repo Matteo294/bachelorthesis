@@ -48,10 +48,14 @@ double IsingMicrocanonical::Hamiltonian(){
             s2 += this->states[i][j]*this->states[i][j+1];
             s2 += this->states[i][j]*this->states[i+1][j];
         }
-        s1 += this->states[i][this->Ncols-1];
+        s1 += this->states[i][this->Nrows-1];
+        s2 += this->states[i][this->Ncols-1]*this->states[i+1][this->Ncols-1];
     }
-    for (int j=0; j<this->Ncols; j++) s1 += this->states[this->Nrows-1][j];
-    //this->E = s1*this->B - s2*this->J;
+    for (int j=0; j<this->Nrows; j++){
+        s1 += this->states[this->Nrows-1][j];
+        s2 += this->states[this->Ncols-1][j]*this->states[this->Nrows-1][j+1];
+    }
+    this->E = -s1*this->B - s2*this->J;
     return this->E;
 }
 

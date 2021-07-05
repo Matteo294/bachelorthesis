@@ -13,11 +13,12 @@ class IsingCanonical{
         void thermalize(int ncycles);
         void countUp();
         double Entropy(int n=0);
-        void flip(int idx1, int idx2);
+        double flip(int idx1, int idx2);
         double T;
         int N;
         double J;
         double B;
+        double E;
         vector<vector<double>> states;
         int nplus;
 };

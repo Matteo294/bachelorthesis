@@ -1,22 +1,25 @@
 #include "IsingCanonical.h"
+#include <fstream>
+#include <cmath>
 
 using namespace std;
 
-IsingCanonical::IsingCanonical(double T, int N, double J, double B) : states(N, vector<double>(N, -1)){
+IsingCanonical::IsingCanonical(double T, int N, double J, double B) : states(N, vector<double>(N, 1)){
     srand(time(NULL));
     this->T = T;
     this->N = N;
     this->J = J;
     this->B = B;
     float rnd_spin;
-    /*for(int i=0; i<N; i++){
+    this->nplus = 0;
+    for(int i=0; i<N; i++){
         for(int j=0; j<N; j++){
-            rnd_spin = (rand()%2 - 0.5); // select 0 or 1 and convert into +-1/2 spin
+            rnd_spin = (rand()%2)*2 - 1; // select 0 or 1 and convert into +-1 spin
             this->states[i][j] = rnd_spin;
             if (rnd_spin > 0) this->nplus++;
         }
-    }*/
-    this->nplus = 0.0;
+    }
+    this->E = this->Hamiltonian();
 }
 
 // remember mu=1
@@ -30,15 +33,32 @@ double IsingCanonical::Hamiltonian(){
             s2 += this->states[i][j]*this->states[i+1][j];
         }
         s1 += this->states[i][this->N-1];
+        s2 += this->states[i][this->N-1]*this->states[i+1][this->N-1];
     }
-    for (int j=0; j<this->N; j++) s1 += this->states[this->N-1][j];
-    return s1*this->B - s2*this->J;
+    for (int j=0; j<this->N; j++){
+        s1 += this->states[this->N-1][j];
+        s2 += this->states[this->N-1][j]*this->states[this->N-1][j+1];
+    }
+    return -s1*this->B - s2*this->J;
 }
 
-void IsingCanonical::flip(int idx1, int idx2){
-    this->states[idx1][idx2] = -this->states[idx1][idx2];
+double IsingCanonical::flip(int idx1, int idx2){
+    double delta = 0.0;
+
+    if(idx1<this->N-1) delta += this->states[idx1+1][idx2];
+    if(idx2<this->N-1) delta += this->states[idx1][idx2+1];
+    if(idx1>0) delta += this->states[idx1-1][idx2];
+    if(idx2>0) delta += this->states[idx1][idx2-1];
+
+    delta = +2*this->states[idx1][idx2]*delta*this->J +2*this->states[idx1][idx2]*this->B;
+
+    this->E += delta;
+
+    this->states[idx1][idx2] = (double) -1*this->states[idx1][idx2];
     if (this->states[idx1][idx2] > 0) this->nplus++;
     else this->nplus--;
+
+    return delta; // returns Enew - Eold
 }
 
 void IsingCanonical::countUp(){
@@ -59,20 +79,25 @@ double IsingCanonical::Entropy(int n){
 }
 
 void IsingCanonical::thermalize(int ncycles){
-    double old_energy, new_energy, deltaE, Esum;
+    srand(time(NULL));
+    ofstream myfile;
+    myfile.open("energies.csv");
     int idx1, idx2;
-    old_energy = this->Hamiltonian();
-    new_energy = old_energy;
-    deltaE = 0.0;
-    Esum = 0.0;
+    double deltaE;
+    double r;
+    int accepted = 0;
+    cout << "Temp " << this->T << endl;
     for(int i=0; i<ncycles; i++){
-            idx1 = rand()%this->N; // index of the spin to flip
-            idx2 = rand()%this->N; // index of the spin to flip
-            this->flip(idx1, idx2);
-            new_energy = this->Hamiltonian();
-            if ( (((new_energy - old_energy) / T) < 0) || (exp((new_energy - old_energy)/this->T) < (double)rand()/RAND_MAX)){
-                old_energy = new_energy;
-            }
-            else this->flip(idx1, idx2);
+        idx1 = rand()%this->N; // index of the spin to flip
+        idx2 = rand()%this->N; // index of the spin to flip
+        //cout << this->states[idx1][idx2] << endl;
+        deltaE = this->flip(idx1, idx2);
+        r = (double)rand()/RAND_MAX;
+        if ( ((deltaE/this->T) < 0) || (exp(-deltaE/this->T) > r)){
+            accepted++;
         }
+        else this->flip(idx1, idx2);
+        myfile << this->E*exp(-this->E/this->T) << endl;
+    }
+    myfile.close();
 }
