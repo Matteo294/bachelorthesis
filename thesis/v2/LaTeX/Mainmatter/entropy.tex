@@ -1,4 +1,4 @@
-\chapter{Definition of the entropy}
+\chapter{Issues on the entropy definition}
 \label{ch:entropy}
 The temperature definition via
 \begin{equation*}
@@ -53,7 +53,6 @@ or
 \begin{equation*}
     \frac{\partial \rho}{\partial t} = \left\{H, \rho\right\}
 \end{equation*}
-ADD PROOF OF THE Liouville's theorem. \\
 \vspace{10pt}
 In developing his theory, Gibbs' main goal was to produce a rational fundation for thermodynamics. Hence, Gibbs's work was guided by analogies between his theory and thermodynamics. \\
 In his book \cite{gibbs_2010} Gibbs derived a relation in the canonical ensemble that is
@@ -102,7 +101,7 @@ and the Boltzmann's entropy
 has a direct and important consequence on the existence of negative temperatures. Indeed it is easy to see that the integrated density of states defined in equation 
 \ref{eq:Omega_E}, that is the number of states whose energy is less than or equal to $E$, is a monotonically increasing function of the energy, hence the temperature is always positive. On the other side,
 the density of states $\omega(E)$ that enters in the Boltzmann's entropy denotes the number of states in the range $(E, E+dE)$ and there is no reason to believe that is a monotonically increasing function of the energy. In fact we have already seen
-that in the case of a non interacting two level system the Boltmann's entropy leads to negative temperatures. \\
+that in the case of a non interacting two levels system the Boltmann's entropy leads to negative temperatures. \\
 The choice of the correct microcanonical entropy is not a straightforward process since different definitions of the entropy can be used untill they are able to reproduce the thermodynamics. \\
 In 1991 Berdichevsky \textit{et al.} \cite{original_entropy} pointed out some arguments in favour of the Gibbs' entropy, which have then been developed by many authors. The main arguments were proposed by 
 Dunkel and Hillbert in 2014 \cite{Dunkel_Hillbert} introducing the so called \emph{thermostatistical consistency condition}. \par 
@@ -127,12 +126,12 @@ Now, since
         \end{array}
     \label{eq:temperatures_definition}
 \end{equation}
-where the prime indicates the differentiation with respect to the energy of the system. One has that 
+where the prime indicates the differentiation with respect to the energy of the system, one has that 
 \begin{gather*}
     T_B \left(\frac{\partial S_B}{\partial A_{\mu}}\right) = \frac{1}{\Omega''} \frac{\partial \Omega'}{\partial A_{\mu}} \\
     T_G \left(\frac{\partial S_G}{\partial A_{\mu}}\right) = \frac{1}{\Omega'} \frac{\partial \Omega}{\partial A_{\mu}}
 \end{gather*}
-so in general we expect that if one of the two definitions of the entropy satisfies condition \ref{eq:cond1}, the other one does not, and it is easy to see that the Gibbs entropy does
+so in general we expect that if one of the two definitions of entropy satisfies condition \ref{eq:cond1}, the other one does not, and it is easy to see that the Gibbs' entropy does
 \begin{equation*}\begin{aligned}
     T_{G}\left(\frac{\partial S_{G}}{\partial A_{\mu}}\right) &=\left(\frac{\partial S_{G}}{\partial E}\right)^{-1}\left(\frac{\partial S_{G}}{\partial A_{\mu}}\right)=\frac{1}{\omega} \frac{\partial}{\partial A_{\mu}} \int \, dx \ \theta(E-\mathcal{H}(x)) \\
     &=\frac{1}{\omega} \int \, dx \ \frac{\partial \theta(E-\mathcal{H}(x))}{\partial A_{\mu}} = -\frac{1}{\omega} \int \, dx \ \delta(E-\mathcal{H}(x)) \frac{\partial \mathcal{H}(x)}{\partial A_{\mu}} \\
@@ -158,7 +157,7 @@ where
 \end{equation*}
 The integrated density of states, that is the number of states with energy less than or equal to $E$, can be computed as 
 \begin{gather*}
-    \Omega(E) = \frac{1}{h^{3N}} \, \int d^{3N}p \int d^{3N}q \quad \theta(E-\mathcal{H}(t, \ve q, \ve p)) = \\ = \frac{V^N}{h^{3N}} \, \int d^{3N}p \quad \theta\left(\sum_i \frac{\ve{p}_i^2}{2m}- E\right) 
+    \Omega(E) = \frac{1}{h^{3N}} \, \int d^{3N}p \int d^{3N}q \quad \theta(E-\mathcal{H}(t, \ve q, \ve p)) = \\ = \frac{V^N}{h^{3N}} \, \int d^{3N}p \quad \theta\left(E - \sum_i \frac{\ve{p}_i^2}{2m}\right) 
     = \frac{V^N \, (2\pi mE)^{3N/2}}{h^{3N} \, \Gamma(\frac{3N}{2}+1)}
 \end{gather*}
 so that the density of states is 
