@@ -12,11 +12,11 @@ int main(){
     initfile.open("dataInitCanonical.csv");
     endfile.open("dataFinalCanonical.csv");
     
-    const double T = 100; // Temperature of the system
+    const double T = 2.1; // Temperature of the system
     const int N = 200; // Number of sites per each dimension
-    const double J =  0.0; // Coupling
-    const double B = 1.0; // Magnetic field
-    const int nsteps = 1e7; // MonteCarlo steps
+    const double J =  1.0; // Coupling
+    const double B = 0.0; // Magnetic field
+    const int nsteps = 1e9; // MonteCarlo steps
 
     IsingCanonical S(T, N, J, B);
 

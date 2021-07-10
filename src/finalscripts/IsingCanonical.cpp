@@ -1,6 +1,7 @@
 #include "IsingCanonical.h"
 #include <fstream>
 #include <cmath>
+#include <random>
 
 using namespace std;
 
@@ -79,25 +80,22 @@ double IsingCanonical::Entropy(int n){
 }
 
 void IsingCanonical::thermalize(int ncycles){
-    srand(time(NULL));
-    ofstream myfile;
-    myfile.open("energies.csv");
+    uniform_int_distribution<> uniform(0.0, this->N-1);
+    random_device rd1, rd2;
+    mt19937_64 gen1(rd1()), gen2(rd2());
     int idx1, idx2;
     double deltaE;
     double r;
     int accepted = 0;
     cout << "Temp " << this->T << endl;
     for(int i=0; i<ncycles; i++){
-        idx1 = rand()%this->N; // index of the spin to flip
-        idx2 = rand()%this->N; // index of the spin to flip
-        //cout << this->states[idx1][idx2] << endl;
+        idx1 = uniform(gen1);
+        idx2 = uniform(gen2);
         deltaE = this->flip(idx1, idx2);
         r = (double)rand()/RAND_MAX;
         if ( ((deltaE/this->T) < 0) || (exp(-deltaE/this->T) > r)){
             accepted++;
         }
         else this->flip(idx1, idx2);
-        myfile << this->E*exp(-this->E/this->T) << endl;
     }
-    myfile.close();
 }

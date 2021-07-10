@@ -15,21 +15,21 @@ simulations are presented and discussed according to what said in the previous c
         }
       }
     \end{tikzpicture}
-    \caption{2D Ising model. The spins are organised in a 2D squared lattice and can assume only two values, either up or down. In the most general way the system is described by the hamiltonian given by equation \ref{eq:general_hamiltonian_Ising}}
+    \caption{2D Ising model. The spins are organised in a 2D squared lattice and can assume only two values, either up or down. In the most general way the system is described by the Hamiltonian given by equation \ref{eq:general_Hamiltonian_Ising}}
     \label{fig:IsingLattice}
 \end{figure}
 The Ising model is a mathematical model initially used to describe magnetic properties of materials in statistical mechanics. It consists of a collection of spins 
 organised in a lattice that can assume two values, either 1 or -1. \\
-The spins are allowed to interact with their nearest neighbors and in the most general form the hamiltonian assumes the form
+The spins are allowed to interact with their nearest neighbors and in the most general form the Hamiltonian assumes the form
 \begin{equation}
     \mathcal{H}(\{\sigma_k\}) = -\sum_{\langle i j\rangle} J_{i j} \sigma_{i} \sigma_{j} - \sum_{j} B_j\sigma_{j}
-    \label{eq:general_hamiltonian_Ising}
+    \label{eq:general_Hamiltonian_Ising}
 \end{equation}
 where $B_j$ indicates the intensity of the magnetic field on the spin $j$ and $J_{ij}$ indicates the strength of the interaction between the spin $i$ and the spin $j$.
 In the following analysis I will assume $J_{ij} = J, B_j = B \ \forall i,j$. \\
 The sign of the interaction parameter $J$ determines whether we are dealing with ferromagnetic materials ($J>0$) or antiferromagnetic materials ($J < 0$). In the case of $J=0$
 we return to the two levels system discussed in chapter \ref{ch:TLS}. \\
-Let us first restrict the analysis to the purely interacting case setting $B=0$. In this case the hamiltonian initially given by \ref{eq:general_hamiltonian_Ising} becomes
+Let us first restrict the analysis to the purely interacting case setting $B=0$. In this case the Hamiltonian initially given by \ref{eq:general_Hamiltonian_Ising} becomes
 \begin{equation*}
     \mathcal{H}(\{\sigma_k\}) = -J \sum_{\langle i j\rangle}\sigma_{i} \sigma_{j}
 \end{equation*}
@@ -128,7 +128,7 @@ Of course, in order to perform an accurate average, one needs to
     \item Guarantee that the system visits every possible microstate compatible with the macroscopical configuration so that all the possible values of the physical quantity are taken into account when performing the average
     \item Guarantee that every possible state is visited with a frequency that is equal to the probability of the state itself
 \end{enumerate}
-This can be accomplished with a Monte Carlo method, precisely by means of the \emph{Metropolis-Hastings algorithm}, which allows to perform a random walk trough the configurations of the system and respect the above stated conditions. \\
+This can be accomplished with a Monte Carlo method, precisely by means of the \emph{Metropolis-Hastings algorithm}, which allows one to perform a random walk trough the configurations of the system and respect the above stated conditions. \\
 The main points of the Metropolis-Hastings' \cite{Hastings} algorithm are now briefly reported, inviting the reader to consult more appropriate sources for further information. \par
 \vspace{10pt}
 Let us suppose that we want to sample from a probability distribution $p(x)$. \\
@@ -150,7 +150,7 @@ in which we describe the system: in the canonical ensemble $p(x)$ is given by th
 \newpage
 
 \section{Single system at negative temperature}
-The first case I want to study is the equilibirum configuration of one single system prepared at temperature $T$. After fixing the temperature, the system is prepared in a random configuration: then the systems goes under $10^7$ Monte Carlo cycles 
+The first case I want to study is the equilibirum configuration of one single system prepared at temperature $T$. After fixing the temperature, the system is prepared in a random configuration: then the system goes under $10^7$ Monte Carlo cycles 
 sampling from the probability distribution given by \ref{eq:Boltzmann_factor_Ising}. The initial configuration is reported in figure \ref{fig:initial_configuration}. \\
 \begin{figure}
     \centering 
@@ -174,19 +174,19 @@ Figure \ref{fig:MC_single_final_state_ferro} reports the final states of a ferro
 figure \ref{fig:MC_single_final_state_antiferro} reports those of an antiferromagnetic system for the same temperature values. \\
 \begin{figure}[h]
     \centering 
-    \hfill\begin{minipage}[c]{0.45\textwidth}
+    \hfill\begin{minipage}[t]{0.45\textwidth}
         \centering
         \includegraphics[scale=0.45]{./images/ising/T_001_ferro.eps}
         \captionof*{figure}{\hspace{20pt}T = \SI{0.01}{\kelvin}}
     \end{minipage}%
     \hfill
-    \begin{minipage}[c]{0.45\textwidth}
+    \begin{minipage}[t]{0.45\textwidth}
         \centering
         \includegraphics[scale=0.45]{./images/ising/T_n001_ferro.eps}
         \captionof*{figure}{\hspace{20pt} T = \SI{-0.01}{\kelvin}}
     \end{minipage}
     \hfill
-    \begin{minipage}[c]{\textwidth}
+    \begin{minipage}[t]{\textwidth}
         \centering
         \includegraphics[scale=0.45]{./images/ising/T_065_ferro.eps}
         \captionof*{figure}{T = \SI{0.65}{\kelvin}}
@@ -244,7 +244,7 @@ Indeed it can be seen comparing figure \ref{fig:MC_single_final_state_ferro} wit
 
 \section{Two systems into contact}
 The second simulation consists in preparing two systems at different temperatures, one of which is negative, and putting them into contact, observing the behaviour of the two systems at equilibrium. \\
-The physical content of the experiment is better appreciated if we return to the non-interacting case of the two level system and we use the hamiltonian
+The physical content of the experiment is better appreciated if we return to the non-interacting case of the two level system and we use the Hamiltonian
 \begin{equation*}
     \mathcal{H}(\{\sigma_k\}) = -B \sum_i \sigma_i
 \end{equation*}
