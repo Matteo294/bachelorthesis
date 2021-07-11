@@ -13,8 +13,8 @@ def S(E):
 Evals1 = np.linspace(0.49, 0.49999, 1000)
 Evals2 = np.linspace(0.50001, 0.51, 1000)
 
-plt.plot(Evals1, T(Evals1), 'black', linewidth=2.0)
-plt.plot(Evals2, T(Evals2), 'black', linewidth=2.0)
+plt.plot(Evals1, T(Evals1), 'royalblue', linewidth=2.0)
+plt.plot(Evals2, T(Evals2), 'royalblue', linewidth=2.0)
 plt.xlabel(r'$E/n\epsilon$', fontsize=16)
 plt.ylabel(r'$\epsilon T \, / \, k_b$', fontsize=16)
 ax = plt.gca()
@@ -24,7 +24,7 @@ ax.tick_params(axis='both', direction='in', bottom=True, top=False, left=True, r
 plt.show()
 
 Evals = np.linspace(1e-10, 1 - 1e-12, 1000)
-plt.plot(Evals, S(Evals), 'black', linewidth=2.0)
+plt.plot(Evals, S(Evals), 'royalblue', linewidth=2.0)
 plt.xlabel(r'$E \, / \, n\epsilon$', fontsize=16)
 plt.ylabel(r'$S(E) \, / \, k_B$', fontsize=16)
 ax = plt.gca()

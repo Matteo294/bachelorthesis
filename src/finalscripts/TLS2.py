@@ -39,9 +39,9 @@ dydx = np.gradient(S(Evals), dx)
 print(dydx[t1])
 deltaT=130
 
-plt.plot(Evals[t2-deltaT:t2+deltaT],dydx[t2]*Evals[t2-deltaT:t2+deltaT]+ S(Evals[t2])-dydx[t2]*Evals[t2],'--',color='C1', linewidth=2.2)
+plt.plot(Evals[t2-deltaT:t2+deltaT],dydx[t2]*Evals[t2-deltaT:t2+deltaT]+ S(Evals[t2])-dydx[t2]*Evals[t2],'--',color='red', linewidth=2.2)
 Evals = np.append(Evals, np.linspace(1, 2, 1000))
-plt.plot(Evals[t3-deltaT:t3+deltaT],dydx[t3]*Evals[t3-deltaT:t3+deltaT]+ S(Evals[t3])-dydx[t3]*Evals[t3],'--',color='C2', linewidth=2.2)
+plt.plot(Evals[t3-deltaT:t3+deltaT],dydx[t3]*Evals[t3-deltaT:t3+deltaT]+ S(Evals[t3])-dydx[t3]*Evals[t3],'--',color='blue', linewidth=2.2)
 plt.plot(Evals[t1-15:t1+15], dydx[t1]*Evals[t1-15:t1+15] + S(Evals[t1])-dydx[t1]*Evals[t1],'--',color='C0', linewidth=2.2)
 plt.xlabel(r'$E \, / \, N\epsilon$', fontsize=16)
 plt.ylabel(r'$S(E) \, / \, k_B$', fontsize=16)

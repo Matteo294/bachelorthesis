@@ -144,34 +144,25 @@ The system is initially prepared in a certain configuration $x$ which can be arb
     \item if $w \geq 1$ the proposal change is accepted and $x_{i+1} = x^*$
     \item otherwise a number $r$ is extracted from a uniform distribution in $[0,1]$. If $w > r$ the proposal change is still accepted and $x_{i+1} = x^*$. Otherwise the proposal moved is refused and $x_{i+1} = x_i$
 \end{enumerate}
-The higher the number of Monte-Carlo cycles, the closer the distribution of the visited states to the probability distribution $p(x)$, the more precise the expectation values calculated as \ref{eq:averageval}. \\
+The higher the number of Monte Carlo cycles, the closer the distribution of the visited states to the probability distribution $p(x)$, the more precise the expectation values calculated as \ref{eq:averageval}. \\
 The simplest choice for the proposal distribution $J(x^*|x)$, even if not the most efficient, is the uniform distribution. The distribution $p(x)$, on the other side, is related to the ensemble 
 in which we describe the system: in the canonical ensemble $p(x)$ is given by the Maxwell-Boltzmann distribution given in equation \ref{eq:Boltzmann_factor_Ising}.
 \newpage
 
 \section{Single system at negative temperature}
-The first case I want to study is the equilibirum configuration of one single system prepared at temperature $T$. After fixing the temperature, the system is prepared in a random configuration: then the system goes under $10^7$ Monte Carlo cycles 
-sampling from the probability distribution given by \ref{eq:Boltzmann_factor_Ising}. The initial configuration is reported in figure \ref{fig:initial_configuration}. \\
+The first case I want to study is the equilibirum configuration of one single system prepared at temperature $T$. After fixing the temperature, the system is prepared in a random configuration: then the system goes under $10^6$ Monte Carlo cycles 
+sampling from the probability distribution given by \ref{eq:Boltzmann_factor_Ising}. An example of initial configuration is reported in figure \ref{fig:initial_configuration}. \\
 \begin{figure}
     \centering 
-    \begin{minipage}[c]{0.45\textwidth}
-        \centering
-        \includegraphics[scale=0.38]{./images/ising/initconf.eps}
-        \captionof*{figure}{Initial configuration}
-    \end{minipage}
-    \begin{minipage}[c]{0.45\textwidth}
-        \centering
-        \includegraphics[scale=0.38]{./images/ising/T_100_ferro.eps}
-        \captionof*{figure}{T = \SI{100}{\kelvin}}
-    \end{minipage}
-    \caption{On the left the initial configuration for the system. Each spin value was extracted randomly between $+1$ or $-1$. On the right the final state obtained for $T = \SI{100}{\kelvin}$
-    for the ferromagnetic case. The result is analogue to the antiferromagnetic case and also to the negative high temperature (in absolute value) limit}
+    \centering
+    \includegraphics[scale=0.5]{./images/ising/initconf.eps}
+    \caption{Initial configuration for the system. Each spin value was extracted randomly between $+1$ or $-1$.}
     \label{fig:initial_configuration}
 \end{figure}
-The simulations are run for three different values of the temperature, that is one at low temperature $T_1 = \SI{0.01}{\kelvin}$, one at relatively low temperature $T_2 = \SI{0.65}{\kelvin}$ and one at high temperature $T_3 = \SI{100}{\kelvin}$. Each of them is run both 
-for the ferromagnetic and antiferromagnetic cases. \\
+The simulations are run for four different values of temperature, that is one at low positive temperature $T_1 = \SI{0.01}{\kelvin}$, one at low (in absolute value) negative temperature $T_2 = \SI{-0.01}{\kelvin}$, one at high positive temperature $T_3 = \SI{100}{\kelvin}$ and one at high (in absolute value) negative temperature $T_4 = \SI{-100}{\kelvin}$. 
+Each of them is run both for the ferromagnetic and antiferromagnetic cases. \\
 Figure \ref{fig:MC_single_final_state_ferro} reports the final states of a ferromagnetic system, while
-figure \ref{fig:MC_single_final_state_antiferro} reports those of an antiferromagnetic system for the same temperature values. \\
+figure \ref{fig:MC_single_final_state_antiferro} reports those of an antiferromagnetic system.\\
 \begin{figure}[h]
     \centering 
     \hfill\begin{minipage}[t]{0.45\textwidth}
@@ -183,13 +174,13 @@ figure \ref{fig:MC_single_final_state_antiferro} reports those of an antiferroma
     \begin{minipage}[t]{0.45\textwidth}
         \centering
         \includegraphics[scale=0.45]{./images/ising/T_n001_ferro.eps}
-        \captionof*{figure}{\hspace{20pt} T = \SI{-0.01}{\kelvin}}
+        \captionof*{figure}{\hspace{20pt} T = \SI{-0.01}{\kelvin} (zoomed)}
     \end{minipage}
     \hfill
     \begin{minipage}[t]{\textwidth}
         \centering
-        \includegraphics[scale=0.45]{./images/ising/T_065_ferro.eps}
-        \captionof*{figure}{T = \SI{0.65}{\kelvin}}
+        \includegraphics[scale=0.45]{./images/ising/T_100_ferro.eps}
+        \captionof*{figure}{T = \SI{100}{\kelvin}}
     \end{minipage}
     \caption{Ferromagnetic system}
     \label{fig:MC_single_final_state_ferro}
@@ -199,7 +190,7 @@ figure \ref{fig:MC_single_final_state_antiferro} reports those of an antiferroma
     \begin{minipage}[c]{0.45\textwidth}
         \centering
         \includegraphics[scale=0.45]{./images/ising/T_001_antiferro.eps}
-        \captionof*{figure}{\hspace{20pt}T = \SI{0.01}{\kelvin}}
+        \captionof*{figure}{\hspace{20pt}T = \SI{0.01}{\kelvin} (zoomed)}
     \end{minipage}
     \hfill
     \begin{minipage}[c]{0.45\textwidth}
@@ -210,16 +201,16 @@ figure \ref{fig:MC_single_final_state_antiferro} reports those of an antiferroma
     \hfill
     \begin{minipage}[c]{\textwidth}
         \centering
-        \includegraphics[scale=0.45]{./images/ising/T_n065_antiferro.eps}
-        \captionof*{figure}{T = \SI{0.65}{\kelvin}}
+        \includegraphics[scale=0.45]{./images/ising/T_100_antiferro.eps}
+        \captionof*{figure}{T = \SI{100}{\kelvin}}
     \end{minipage}
     \centering 
     \caption{Antiferromagnetic system}
     \label{fig:MC_single_final_state_antiferro}
 \end{figure}
-According to what predicted in paragraph \ref{subsec:ferromagnetic}, the lower the temperature, the more the system tends to organize
+According to what predicted in paragraph \ref{subsec:ferromagnetic}, at low positive temperature the system tends to organize
 in an ordered structure grouping the spins into bigger clusters. As the temperature increases, the system starts forming imperfections increasing the disorder inside. This can be understood 
-also in terms of the minimal free energy principle. In a canonical ensemble the most probable configuration is the one that minimizes the free energy
+also in terms of the minimal free energy principle. In the canonical ensemble the most probable configuration is the one that minimizes the free energy
 \begin{equation}
     F(T, V) = E - TS
     \label{eq:free_energy}
@@ -229,7 +220,7 @@ can be driven either by the minimization of the internal energy or by an increas
 we find a disordered configuration at high temperature. \par
 \vspace{10pt}
 As for the ferromagnetic case, the results for the antiferromagnetic system agree with what predicted in section \ref{subsec:antiferromagnetic}. For high temperature the free energy minimazion is driven by the entropic contribute, leading to a high disordered configuration. 
-For low temperature the minimization of the energy 
+For low positive temperature the minimization of the energy 
 \begin{equation*}
     \mathcal{H}(\{\sigma_k\}) = -J \sum_{\langle i j\rangle}\sigma_{i} \sigma_{j}
 \end{equation*}
@@ -244,11 +235,11 @@ Indeed it can be seen comparing figure \ref{fig:MC_single_final_state_ferro} wit
 
 \section{Two systems into contact}
 The second simulation consists in preparing two systems at different temperatures, one of which is negative, and putting them into contact, observing the behaviour of the two systems at equilibrium. \\
-The physical content of the experiment is better appreciated if we return to the non-interacting case of the two level system and we use the Hamiltonian
+The physical content of the experiment is better appreciated if we return to the non-interacting case of the two levels system and we use the Hamiltonian
 \begin{equation*}
     \mathcal{H}(\{\sigma_k\}) = -B \sum_i \sigma_i
 \end{equation*}
-The first system is prepared at temperature $T_1 = \SI{-0.01}{\kelvin}$ and remembering that $\frac{1}{T} = \frac{\partial S}{\partial E}$, this means that the system lies on the right edge of the plot in figure \ref{eq:TLS_ensemble_energy}, that is the configuration with maximal energy with all the spins aligned anti-parallel to the field. This can 
+The first system is prepared at temperature $T_1 = \SI{-0.01}{\kelvin}$ and remembering that $\frac{1}{T} = \frac{\partial S}{\partial E}$, this means that the system lies on the right edge of the plot in figure \ref{eq:TLS_ensemble_energy}, that is the configuration with maximal energy with all the spins aligned antiparallel with respect to the field. This can 
 also be seen by looking at the Boltzmann probability factor 
 \begin{equation*}
     p(\{\sigma_k\}) = e^{-|\beta| B \sum_i \sigma_i}
@@ -268,7 +259,7 @@ Each system was a $200 \times 200$ squared lattice. Again, I chose the free boun
         \includegraphics[scale=0.45]{images/ising/mixing_S2_before}
     \end{minipage}
     \hfill
-    \caption{The figure reports the configurations of the systems $\mathcal{S}_1$ and $\mathcal{S}_2$ after thermalization. The systems $\mathcal{S}_1$ and $\mathcal{S}_2$ are prepared respectively at temperatures $T_1 = \SI{-0.01}{\kelvin}$ and $T_2 = \SI{100}{\kelvin}$. A red tile indicates an up spin, while a blue one indicates a down spin.}
+    \caption{The figure reports the configurations of the systems $\mathcal{S}_1$ and $\mathcal{S}_2$ after thermalization. The systems $\mathcal{S}_1$ and $\mathcal{S}_2$ are prepared respectively at temperatures $T_1 = \SI{-0.01}{\kelvin}$ and $T_2 = \SI{100}{\kelvin}$. A blue tile indicates an up spin, while a white one indicates a down spin.}
     \label{fig:contact_initial}
 \end{figure}
 \vspace{10pt}
@@ -299,7 +290,7 @@ Each system was a $200 \times 200$ squared lattice. Again, I chose the free boun
     \label{fig:contact_symbolized}
 \end{figure}
 The systems were then brought into contact: this was done pratically by creating a $400 \times 200$ lattice and copying the values of the two separated systems into the new one. The system is initialized 
-with energy $E = E_1 + E_2$ where the the two energies refers to the energies of the systems $\mathcal{S}_1$ and $\mathcal{S}_2$ before putting them into contact. The study then proceeded in a microcanonical ensemble 
+with energy $E = E_1 + E_2$ where the the two energies refers to the energies of the systems $\mathcal{S}_1$ and $\mathcal{S}_2$ before putting them into contact. The study then proceeded in the microcanonical ensemble 
 with energy $E$, trying to search the configuration that maximizes the entropy given the available energy. The algorithm used for the simulation was not exactly the one introduced in section \ref{sec:MCMC} but the so called \emph{demon Monte Carlo}, which can be summarized in the following steps. \\
 At first, a new degree of freedom is introduced in the system, called the demon. The demon energy must be positive but there are no restrictions on the upper value. Then
 \begin{enumerate}
@@ -324,7 +315,7 @@ After $10^7$ Monte Carlo cycles, the configuration is reported in figure \ref{fi
     \end{minipage}
     \hfill
     \caption{The figure reports the configurations of the systems $\mathcal{S}_1$ and $\mathcal{S}_2$ after beeing put into contact. After a thermalization of $10^7$ Monte Carlo steps, the two systems must share the same temperature as by definition of equilibrium. \\
-    As before, a red tile indicates an up spin, while a blue one indicates a down spin.}
+    As before, a blue tile indicates an up spin, while a white one indicates a down spin.}
     \label{fig:contact_final}
 \end{figure}
 It can be seen that in the final state of the two systems there is a prevalence of up spins rather than downs due to energy conservation in the process of putting $\mathcal{S}_1$ and $\mathcal{S}_2$ into contact. The system $\mathcal{S}_1$, initially prepared at temperature $T_1 = \SI{-0.01}{\kelvin}$ with almost all the spins up, at equilibrium has reduced his number of up spins, still
