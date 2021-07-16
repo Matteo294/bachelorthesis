@@ -67,6 +67,7 @@ int main(){
     // Store energy and entropy of the initial configuration
     double E1 = S1.Hamiltonian();
     double E2 = S2.Hamiltonian();
+    double initE = E1+E2;
 
 
     // Create microcanonical systems S1+S2 (two body into contact)
@@ -177,6 +178,6 @@ int main(){
     /************************************************************/ 
 
     cout << "Spin up S1: " << S1.nplus << "\t\t Spin up S2: " << S2.nplus << " " << endl;
-
+    cout << "Energies: " << S1.Hamiltonian() << " " << S2.Hamiltonian() << " Initial " << initE << endl;
     return 0;
 }
