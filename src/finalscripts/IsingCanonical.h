@@ -19,6 +19,7 @@ class IsingCanonical{
         double J;
         double B;
         double E;
+        double avgE;
         vector<vector<double>> states;
         int nplus;
 };

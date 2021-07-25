@@ -17,7 +17,7 @@ IsingCanonical::IsingCanonical(double T, int N, double J, double B) : states(N, 
         for(int j=0; j<N; j++){
             rnd_spin = (rand()%2)*2 - 1; // select 0 or 1 and convert into +-1 spin
             this->states[i][j] = rnd_spin;
-            if (rnd_spin > 0) this->nplus++;
+            if (rnd_spin < 0) this->nplus++;
         }
     }
     this->E = this->Hamiltonian();
@@ -56,8 +56,8 @@ double IsingCanonical::flip(int idx1, int idx2){
     this->E += delta;
 
     this->states[idx1][idx2] = (double) -1*this->states[idx1][idx2];
-    if (this->states[idx1][idx2] > 0) this->nplus++;
-    else this->nplus--;
+    if (this->states[idx1][idx2] > 0) this->nplus--;
+    else this->nplus++;
 
     return delta; // returns Enew - Eold
 }
@@ -66,7 +66,7 @@ void IsingCanonical::countUp(){
     int count = 0;
     for(int i=0; i<this->N; i++){
         for(int j=0; j<this->N; j++){
-            if (this->states[i][j] > 0) count++;
+            if (this->states[i][j] < 0) count++;
         }
     }
     this->nplus = count;
@@ -88,6 +88,9 @@ void IsingCanonical::thermalize(int ncycles){
     double r;
     int accepted = 0;
     cout << "Temp " << this->T << endl;
+    this->avgE = 0.0;
+    int ntherm = (int) ncycles/10;
+    this->E = this->Hamiltonian();
     for(int i=0; i<ncycles; i++){
         idx1 = uniform(gen1);
         idx2 = uniform(gen2);
@@ -95,7 +98,12 @@ void IsingCanonical::thermalize(int ncycles){
         r = (double)rand()/RAND_MAX;
         if ( ((deltaE/this->T) < 0) || (exp(-deltaE/this->T) > r)){
             accepted++;
+            this->E += deltaE;
         }
         else this->flip(idx1, idx2);
+        if (i>=ntherm){
+            this->avgE += this->E;
+        }
     }
+    this->avgE /= (ncycles-ntherm);
 }

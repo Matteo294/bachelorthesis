@@ -63,7 +63,7 @@ void IsingMicrocanonical::countUp(){
     int count = 0;
     for(int i=0; i<this->Nrows; i++){
         for(int j=0; j<this->Ncols; j++){
-            if (this->states[i][j] > 0) count++;
+            if (this->states[i][j] < 0) count++;
         }
     }
     this->nplus = count;
@@ -83,7 +83,7 @@ double IsingMicrocanonical::flip(int idx1, int idx2){
     this->E += delta;
 
     this->states[idx1][idx2] = (double) -1*this->states[idx1][idx2];
-    if (this->states[idx1][idx2] > 0) this->nplus++;
+    if (this->states[idx1][idx2] < 0) this->nplus++;
     else this->nplus--;
 
     return delta; // returns Enew - Eold

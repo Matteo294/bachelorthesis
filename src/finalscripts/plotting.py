@@ -18,7 +18,7 @@ s2_init = spins_init[200:][:]
 s1_end = spins_end[:200][:]
 s2_end = spins_end[200:][:]
 
-cmap = colors.ListedColormap(['white','red', 'royalblue'])
+cmap = colors.ListedColormap(['royalblue','red', 'white'])
 bounds = [-1, 0, 1]
 norm = colors.BoundaryNorm(bounds, cmap.N)
 

@@ -8,6 +8,11 @@
 
 using namespace std;
 
+double T(int n1, int n2){
+    cout << n2 << "n " << n1 << endl;
+    return 1/log((double) n2/n1);
+}
+
 int main(){
 
 
@@ -32,10 +37,11 @@ int main(){
     /*********************** Constants **************************/
     /************************************************************/
     const int nspins = 200;
-    const int ncycles = 1e7;
+    const int ncycles = 1e8;
+    const int n_therm = 1e7;
     const double B = 1.0;
     const double J = 0.0;
-    const double T1 = 1e-10;
+    const double T1 = -1e-10;
     const double T2 = 1000;
     /************************************************************/
 
@@ -63,6 +69,8 @@ int main(){
     S1.thermalize(1e6);
     S2.thermalize(1e6);
 
+    cout << "n1n1n1n" << S1.nplus << " " << S2.nplus << endl;
+
 
     // Store energy and entropy of the initial configuration
     double E1 = S1.Hamiltonian();
@@ -89,7 +97,7 @@ int main(){
     old_energy = S.Hamiltonian();
     S.demon_energy = 0.0;
     cout << "After thermalization" << endl;
-    cout << "Energies: " << S1.Hamiltonian() << " " << S2.Hamiltonian() << endl;
+    cout << "Energies: " << S1.Hamiltonian() << " " << S2.Hamiltonian() << " " << S1.avgE << " " << S2.avgE << endl;
     cout << "Spin up S1: " << S1.nplus << "\t\t Spin up S2: " << S2.nplus << " " << endl;
     cout << "Spin up total: " << S.nplus << endl;
     /************************************************************/
@@ -107,13 +115,14 @@ int main(){
         initconffile << endl;
     }
     /************************************************************/
-    
+
 
 
     cout << "Starting MC cycles" << endl;
     deltaE = 0.0;
     int n1, n2;
     
+    double EE1=0.0, EE2=0.0;
     for(int i=0; i<ncycles; i++){
 
 
@@ -129,15 +138,28 @@ int main(){
                 S.demon_energy -= deltaE;
             }
         } 
-
     }
+    while(S.demon_energy > 0){
 
-    
+
+        idx1 = rand()%(S.Nrows); // index of the spin to flip
+        idx2 = rand()%(S.Ncols); // index of the spin to flip
+        deltaE = S.flip(idx1, idx2);
+        if (deltaE > 0) {
+            if (S.demon_energy < deltaE) {
+                S.flip(idx1, idx2); 
+            } else {
+                S.demon_energy -= deltaE;
+            }
+        }
+        else S.flip(idx1, idx2);
+    }
 
     /************************************************************/
     /*********** Print initial configuration to file ************/
     /************************************************************/ 
     cout << "Finished MC cycles" << endl;
+    cout << "Spins: " << S.nplus << endl;
     for(int i=0; i<S.Nrows; i++){
         for(int j=0; j<S.Ncols; j++){
             endconffile << S.states[i][j];
@@ -177,7 +199,9 @@ int main(){
     S2.countUp();
     /************************************************************/ 
 
+    cout << "Temperature: " <<  T(S2.nplus, S2.N*S2.N-S2.nplus) << endl;
+
     cout << "Spin up S1: " << S1.nplus << "\t\t Spin up S2: " << S2.nplus << " " << endl;
-    cout << "Energies: " << S1.Hamiltonian() << " " << S2.Hamiltonian() << " Initial " << initE << endl;
+    cout << "Energies: " << S1.Hamiltonian() << " " << S2.Hamiltonian() << " Initial " << initE << " " << S.demon_energy << endl;
     return 0;
 }
